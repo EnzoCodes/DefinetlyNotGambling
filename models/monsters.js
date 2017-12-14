@@ -1,7 +1,7 @@
 
 module.exports = function(sequelize, DataTypes) {
 
-    var Items = sequelize.define("item", {
+    var Item = sequelize.define("Item", {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -34,5 +34,5 @@ module.exports = function(sequelize, DataTypes) {
     }, {
       timestamps:false
     });
-    return Items;
+    return Item;
   };

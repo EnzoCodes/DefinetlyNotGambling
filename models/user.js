@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     User.associate = function(models) {
-        User.belongsToMany(models.Items, {
+        User.belongsToMany(models.Item, {
             through: "user2items"
         });
     };

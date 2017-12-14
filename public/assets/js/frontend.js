@@ -1,4 +1,29 @@
-$(document).ready(function(){
+$(function(){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     $.post("/", {token: window.localStorage.getItem("token")}).then(function(data){
@@ -6,12 +31,12 @@ $(document).ready(function(){
         if(!data){
             window.localStorage.clear();
         } else {
+            // Set welcome message or already logged in.
             $("#txtUserName").attr("href", "/????");
-            $("#txtPassword").attr("href", "/?????");
 
             window.loclaStorage.clear();
         }
-    })
+    });
 
     $("#btnSignUp").on("click", function(event) {
         event.preventDefault();
@@ -22,8 +47,9 @@ $(document).ready(function(){
         $.ajax("/register", {
             type: "POST",
             data: newUser
-        }).then(function(){
-            return newUser;
+        }).then(function(argument){
+            console.log("Maybe you made a new user!")
+            console.log(argument);
         }
         );
       });
@@ -32,7 +58,6 @@ $(document).ready(function(){
     //     event.preventDefault();
     //
     // });
-
 
 
 
