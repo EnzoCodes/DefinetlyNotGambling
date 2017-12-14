@@ -1,0 +1,108 @@
+<div class="main-container">
+
+  <div class="row">
+    <div class="col s12 text-center">
+      <h4>So much Treasure!</h4>
+      <br>
+
+    </div><!--col-->
+  </div><!--row-->
+
+  <div class="row">
+    <div class="col s12 text-center">
+      <img src="assets/img/Treasure_Chest.png" alt="Treasure Chest" height="100px">
+      <br>
+    </div><!--col-->
+  </div><!--row-->
+
+  <div class="row">
+    <div class="col s12 text-center">
+      <h5>-- Add an item to the Database --</h5>
+    </div><!--col-->
+  </div><!--row-->
+
+  <div class="row">
+            <form id="createitem" class="button-size">
+                <div class="col s4">
+                Name: <textarea rows="1" cols="15" type="text" name="name"></textarea>
+               </div>
+               <div class="col s4">
+                Movie Name: <textarea rows="1" cols="15" type="text" name="movie"></textarea>
+        </div>
+               <div class="col s4">
+                Image <Link:im></Link:im>: <textarea rows="1" cols="15" type="text" name="image"></textarea>
+               </div>
+
+        <div class="input-field col s4">
+    <select name="type">
+        <option value="" disabled selected>Type</option>
+        <option value="Small">Small</option>
+        <option value="Plant Like">Plant Like</option>
+        <option value="Insectesoid">Insectesoid</option>
+        <option value="Space Dragons">Space Dragons</option>  
+    </select>
+        </div>
+
+<div class="input-field col s4">
+    <select name="category">
+        <option value="" disabled selected>Category</option>
+        <option value="Extra Terrestrials">Extra Terrestrials</option>
+        <option value="Vampires">Vampires</option>
+        <option value="Plants and Animals">Plants and Animals</option>
+        <option value="Mutated Creatures">Mutated Creatures</option>
+        <option value="Demons and Supernatural Forces">Demons and Supernatural Forces</option>
+        <option value="Werewolves">Werewolves</option>
+        <option value="Humans and Hominids">Humans and Hominids</option>
+        <option value="The Living Dead">The Living Dead</option>
+    </select>
+</div>
+            <div class="input-field col s4">
+    <select name="tier">
+        <option value="" disabled selected>Tier</option>
+        <option value="4">4</option>
+        <option value="3">3</option>
+        <option value="2">2</option>
+        <option value="1">1</option>  
+    </select>
+        </div>
+      {{!-- <p>Item Category: <textarea rows="1" cols="15" type="text" name="category"></textarea></p> --}}
+      {{!-- <p>Item Tier: <textarea rows="1" cols="15" type="text" name="tier"></textarea></p> --}}
+
+               <div class="col s12 text-center">
+      <button class="saveitem btn-success btn-lg" type="submit">Submit</button>
+      </div>
+      </form>
+    </div><!--col-->
+
+
+  {{!-- {{#each newItem }}
+
+    {{#if this.tier}}
+      <div class="col-xs-3 text-center" style="background-color: orange">
+        <h2>{{this.name}}</h2>
+        <p>Category: {{this.category}}</p>
+        <hp>Type: {{this.type}}</p>
+        <img height="200px" src="{{this.image}}">
+        <p>Movie: {{this.movie}}</p>
+      </div>
+
+    {{else}}
+      <div class="col-xs-3" >
+        <h2>{{this.name}}</h2>
+        <p>Category: {{this.category}}</p>
+        <hp>Type: {{this.type}}</p>
+        <img height="200px" src="{{this.image}}">
+        <p>Movie: {{this.movie}}</p>
+      </div>
+     {{/if}}
+
+  {{/each}} --}}
+  </div><!--row-->
+
+
+
+<script>
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+  </script>

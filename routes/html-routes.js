@@ -13,11 +13,31 @@ module.exports = function(app) {
           });
         // res.render("index")
   
-
+        // app.get("/login", function(req, res) {
+          
+             
+        //             //  console.log(hbsObject);
+        //               //console.log(hbsObject);
+        //               //res.render("partials/profile_page", hbsObject);
+        //               res.render("login_page");
+        //               // We have access to the todos as an argument inside of the callback function
+                    
+        //             });
+                      
+        app.get("/admin", function(req, res) {
+          
+             
+                    //  console.log(hbsObject);
+                      //console.log(hbsObject);
+                      //res.render("partials/profile_page", hbsObject);
+                      res.render("admin");
+                      // We have access to the todos as an argument inside of the callback function
+                    
+                    });
 
     app.get("/profile", function(req, res) {
         console.log(req.body);
-        db.item.findAll({}).then(function(data) {
+        db.Item.findAll({}).then(function(data) {
             var hbsObject ={
               monsters: data
             };
