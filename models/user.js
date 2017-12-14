@@ -9,12 +9,12 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             validate: { len:[1, 25] }
-        }
+        },
         coin_count: {
             type: DataTypes.INTEGER,
             allowNull: false,
             defaultValue: 100
-        }
+        },
         identity: {
             type: DataTypes.STRING,
             defaultValue: "1234512345"
