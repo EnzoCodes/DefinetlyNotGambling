@@ -1,7 +1,7 @@
 
 module.exports = function(sequelize, DataTypes) {
 
-    var Items = sequelize.define("item", {
+    var Item = sequelize.define("Item", {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -34,5 +34,12 @@ module.exports = function(sequelize, DataTypes) {
     }, {
       timestamps:false
     });
-    return Items;
+
+  Item.associate = function(models) {
+    // in a many-to-many relationship, where an author can belong to many posts and vice versa, we will actually need a third table to store all of the possibilities. the "through" property will create that third table for us.
+    Item.belongsToMany(models.User, {
+      through: "user2items"
+    });
+  };
+    return Item;
   };

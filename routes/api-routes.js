@@ -4,9 +4,21 @@ var randtoken = require("rand-token");
 
 // var token = randtoken.generator(["source "]);
 
-
 module.exports = function(app) {
 
+app.post("/admin", function(req, res) {
+    //console.log(req.body); 
+   db.Item.create({
+        name: req.body.name, 
+        movie: req.body.movie, 
+        type: req.body.type, 
+        category: req.body.category, 
+        tier: req.body.tier, 
+        image: req.body.image
+    }).then(function(){
+        res.end(); 
+       });
+});
 
 	app.get("/api/open", function(req,res){
 		var items= [];
@@ -71,6 +83,5 @@ module.exports = function(app) {
 		});	
 
 	});
-
 
 };
