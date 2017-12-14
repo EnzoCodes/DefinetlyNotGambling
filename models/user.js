@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var User = sequelize.define("user", {
+    var User = sequelize.define("User", {
         user_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -10,10 +10,22 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             validate: { len:[1, 25] }
         }
+        coin_count: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            defaultValue: 100
+        }
         identity: {
             type: DataTypes.STRING,
             defaultValue: "1234512345"
         }
     });
+
+    User.associate = function(models) {
+        User.belongsToMany(models.Items, {
+            through: "user2items"
+        });
+    };
+
     return User;
 };
