@@ -1,5 +1,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
+var login = require("./routes/login_routes");
 var db = require("./models");
 
 var PORT = process.env.PORT || 8080;
@@ -18,6 +19,7 @@ app.set("view engine", "handlebars");
 app.use(express.static("public"));
 require("./routes/api-routes.js")(app);
 require("./routes/html-routes.js")(app);
+// require("./routes/login_routes.js")(app);
 
 
 db.sequelize.sync({}).then(function() {
