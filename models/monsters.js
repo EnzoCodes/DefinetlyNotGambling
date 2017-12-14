@@ -1,6 +1,6 @@
 
 module.exports = function(sequelize, DataTypes) {
-    var Monsters = sequelize.define("Monster3", {
+    var Monsters = sequelize.define("Monster", {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
         validate: { len: [1,140]}
       },
       tier: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.INTEGER,
         allowNull: false
       },
       image: {
