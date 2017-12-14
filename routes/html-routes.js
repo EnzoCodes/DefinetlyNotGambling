@@ -17,7 +17,7 @@ module.exports = function(app) {
 
     app.get("/profile", function(req, res) {
         console.log(req.body);
-        db.Monster3.findAll({}).then(function(data) {
+        db.item.findAll({}).then(function(data) {
             var hbsObject ={
               monsters: data
             };
