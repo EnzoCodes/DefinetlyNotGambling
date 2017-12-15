@@ -64,4 +64,8 @@ module.exports = function(app) {
         // res.render("index")
       });
 
+    app.get("/login-page", function(req, res){
+        res.render("login-page");
+    })
+
 };
