@@ -4,13 +4,12 @@ var randtoken = require("rand-token");
 
 module.exports = function (app) {
 
-	app.post("/admin", function (req, res) {
+	app.post("/admincreate", function (req, res) {
 
-		db.Item.create({
+		db.Cat.create({
 			name: req.body.name,
-			movie: req.body.movie,
-			type: req.body.type,
-			category: req.body.category,
+			house: req.body.house,
+			houseImage: req.body.houseImage,
 			tier: req.body.tier,
 			image: req.body.image
 		}).then(function () {

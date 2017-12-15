@@ -26,9 +26,9 @@ module.exports = function (app) {
   });
 
   app.get("/collection", function (req, res) {
-    db.Item.findAll({}).then(function (data) {
+    db.Cat.findAll({}).then(function (data) {
       var hbsObject = {
-        monsters: data
+        kitty: data
       }; 
       res.render("collection", hbsObject);
     });

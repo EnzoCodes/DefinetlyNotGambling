@@ -2,7 +2,115 @@
 {{>nav-partial}}
 {{>user-partial}}  
 {{>coin-count-partial}}
-{{>leaderboard-partial}}
+
+    <style>
+        .images {
+            display: none;
+        }
+        .images2 {
+            display: none;
+        }
+        .hidden-pack-items {
+            display: none;
+        }
+    </style>
+<script>
+$(document).ready(function(){
+    $("#image").click(function(){
+        $("p").hide();
+        $(".images").show();
+        $("#image").hide();
+
+    });
+
+    });
+    $("#1").click(function(){
+        $("#1").hide();
+        //$(".images2").show();
+               $("#5").show();
+    });
+    $("#2").click(function(){
+         $("#2").hide();
+         $("#6").show();
+    });
+    $("#3").click(function(){
+         $("#3").hide();
+         $("#7").show();
+    });
+      $("#4").click(function(){
+           $("#4").hide();
+         $("#8").show();
+    });
+}
+</script>
+</head>
+<body>
+{{!-- 
+<p>If you click on the "Hide" button, I will disappear.</p>
+
+<button id="hide">Hide</button>
+<button id="show">Show</button>
+
+ --}}
+
+
+<div class="class container">
+  
+    <div class="class row">
+        <div class="class col-xs-4"></div>
+            <div class="class col-xs-4">
+
+                <img id="image" src="assets/img/Treasure_Chest.png" height="300px" style="border:1px solid black;max-width:100%;" alt="Photo of Byron Bay, one of Australia's best beaches!">
+    
+            </div>
+        <div class="class col-xs-4"></div>
+    </div>
+
+ 
+
+     <div class="class row">
+        <div class="class col-xs-2"></div>
+            <div class="class col-xs-8">
+                <div class="hidden-pack-items">
+                    {{#each newItems}}
+                        {{this.name}}
+                    {{/each}}
+                </div>
+
+                <div class="shown-pack-items">
+                    {{#each newItems}}
+                        {{this.name}}
+                    {{/each}}
+                </div>
+
+                <span class="images2" id="5"><img width="175px" src="assets/img/ice.png"></span>
+                <span class="images2" id="6"><img width="175px" src="assets/img/grape.png"></span>
+                <span class="images2" id="7"><img width="175px" src="assets/img/orange.png"></span>
+                <span class="images2" id="8"><img width="175px" src="assets/img/lavender.png"></span>
+                <span class="images" id="1"><img width="175px" src="assets/img/qm.png"></span>
+                <span class="images" id="2"><img width="175px" src="assets/img/qm.png"></span>
+                <span class="images" id="3"><img width="175px" src="assets/img/qm.png"></span>
+                <span class="images" id="4"><img width="175px" src="assets/img/qm.png"></span>
+           
+            </div>
+        <div class="class col-xs-2"></div>
+    </div>
+
+       {{!-- <div class="class row">
+           
+        <div class="class col-xs-2"></div>
+            <div class="class col-xs-8">
+                <span class="images2" id="5"><img height="300px" src="assets/img/ice.png"></span>
+                <span class="images2" id="6"><img height="300px" src="assets/img/grape.png"></span>
+                <span class="images2" id="7"><img height="300px" src="assets/img/orange.png"></span>
+                <span class="images2" id="8"><img height="300px" src="assets/img/lavender.png"></span>
+            </div>
+        <div class="class col-xs-2"></div>
+    </div> --}}
+    
+</div>
+</body>
+</html>
 
 <style>
     .images {

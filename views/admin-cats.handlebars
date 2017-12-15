@@ -1,67 +1,91 @@
-
-{{>nav-partial}}
-<div class="main-container">
+ {{>nav-partial}}
+<div class="container">
 
   <div class="row">
-    <div class="col s12 text-center">
+    <div class="col s12 center-align">
       <h4>So much Treasure!</h4>
-    </div><!--col-->
-  </div><!--row-->
+    </div>
+    <!--col-->
+  </div>
+  <!--row-->
 
   <div class="row">
-    <div class="col s12 text-center">
+    <div class="col s12 center-align">
       <img src="assets/img/Treasure_Chest.png" alt="Treasure Chest" height="100px">
       <br>
-    </div><!--col-->
-  </div><!--row-->
+    </div>
+    <!--col-->
+  </div>
+  <!--row-->
 
   <div class="row">
-    <div class="col s12 text-center">
+    <div class="col s12 center-align">
       <h5>Add an item to the Database</h5>
-    </div><!--col-->
-  </div><!--row-->
+    </div>
+    <!--col-->
+  </div>
+  <!--row-->
 
   <div class="row">
     <form id="createitem2" class="button-size">
-        <div class="col s3">
-            Name: <textarea rows="1" cols="15" type="text" name="name"></textarea>
-        </div><!--col-->
+      <div class="col s4">
+        Name:
+        <textarea rows="1" cols="15" type="text" name="name"></textarea>
+      </div>
+      <!--col-->
 
-        <div class="input-field col s3">
-            <select name="house">
-                <option value="" disabled selected>House</option>
-                <option value="Stark">Stark</option>
-                <option value="Lannister">Lannister</option>
-                <option value="Tyrell">Tyrell</option>
-                <option value="Other">Other</option>
-            </select>
-        </div><!--col-->
+      <div class="input-field col s2">
+        <select name="house">
+          <option value="" disabled selected>House</option>
+          <option value="Stark">Stark</option>
+          <option value="Lannister">Lannister</option>
+          <option value="Tyrell">Tyrell</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <!--col-->
 
-        <div class="input-field col s3">
-            <select name="tier">
-                <option value="" disabled selected>Tier</option>
-                <option value="4">4</option>
-                <option value="3">3</option>
-                <option value="2">2</option>
-                <option value="1">1</option>
-            </select>
-        </div><!--col-->
+      <div class="input-field col s2">
+        <select name="tier">
+          <option value="" disabled selected>Tier</option>
+          <option value="4">4</option>
+          <option value="3">3</option>
+          <option value="2">2</option>
+          <option value="1">1</option>
+        </select>
+      </div>
+      <!--col-->
 
-      <div class="col s3">
-            Image <Link:im></Link:im>: <textarea rows="1" cols="15" type="text" name="image"></textarea>
-      </div><!--col-->
+      <div class="col s2">
+        Image
+        <Link:im></Link:im>:
+        <textarea rows="1" cols="15" type="text" name="image"></textarea>
+      </div>
+      <!--col-->
+      <div class="col s2">
+        House Image
+        <Link:im></Link:im>:
+        <textarea rows="1" cols="15" type="text" name="houseImage"></textarea>
+      </div>
+      <!--col-->
+ </div>
+  <!--row-->
+      <br>
 
-    <div class="row"></div>
-        <div class="col s12 text-center">
-            <button class="saveitem2 btn-success btn-lg" type="submit">Submit</button>
-        </div><!--col-->
+      <div class="row">
+        <div class="col s12 center-align">
+          <button class="saveitem2 center-align waves-effect waves-light btn" type="submit">Submit</button>
+        </div>
+        <!--col-->
+      </div>
+
     </form>
-      </div><!--row-->
+ 
 
-  </div>
+</div>
 
 <script>
-  $(document).ready(function() {
+  $(document).ready(function () {
     $('select').material_select();
   });
-  </script>
+</script>
