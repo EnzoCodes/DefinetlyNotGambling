@@ -1,30 +1,72 @@
 $(function(){
 
-    $.post("/", {token: window.localStorage.getItem("token")}).then(function(data){
+    // $.post("/", {token: window.localStorage.getItem("token")}).then(function(data){
+    //
+    //     if(!data){
+    //         window.localStorage.clear();
+    //     } else {
+    //         // Set welcome message or already logged in...
+    //         //????????????
+    //         window.loclaStorage.clear();
+    //     }
+    // });
 
-        if(!data){
-            window.localStorage.clear();
+
+    // Not sure what I'm doing here anymore...
+    $("#btnLogin").on("click", function(event) {
+        event.preventDefault();
+        //Grab user...
+        var user = {
+            user_name: $("#txtUserName").val().trim(),
+            password: $("#txtPassword").val().trim()
+        };
+        //Deny if no info entered...
+        if (user.user_name === "" || user.password === "") {
+            $("#noCred").removeClass("hide");
         } else {
-            // Set welcome message or already logged in...
-            //????????????
-            window.loclaStorage.clear();
+            // Begin login validation...
+            $.post("/logAttempt", user).then(function(res){
+                if (res === null) {
+                    $("#badCred").removeClass("hide");
+                } else {
+                    window.location.href = "/home";
+                }
+            })
         }
     });
 
+
+
+    // Sign-Up BUTTON!
     $("#btnSignUp").on("click", function(event) {
+        // Page doesn't reload.
         event.preventDefault();
+        // Grab full user item from page.
         var newUser = {
-            user_name: $("#txtUserName [name= userName]").val().trim(),
-            password: $("#txtPassword [name= password]").val().trim()
+            user_name: $("#txtUserName").val().trim(),
+            password: $("#txtPassword").val().trim()
         };
-        $.ajax("/register", {
-            type: "POST",
-            data: newUser
-        }).then(function(argument){
-            console.log("Maybe you made a new user!")
-            console.log(argument);
+        // Grab JUST username from page.
+        var nUserN = $("#txtUserName").val().trim();
+        // Check if fields are blank.
+        if (newUser.user_name === "" || newUser.password === "") {
+            $("#noCred").removeClass("hide");
+        // If fields are not blanks
+        } else {
+            // Check for duplicate usernames in DB
+            $.get("/duplicate/"+nUserN).then(function(res){
+                if (res.length > 0){
+                    $("#dupe").removeClass("hide");
+                } else {
+                    // If no dublicates, create new user object in DB.
+                    $.post("/register", newUser).then(function(userData){
+                        console.log("New User created!");
+                        console.log(userData);
+                        window.localStorage.setItem("token", userData.identity);
+                    })
+                }
+            });
         }
-        );
       });
 
     // $("#btnLogin").on("click", function(event){
@@ -44,38 +86,14 @@ $(function(){
       image: $("#createitem [name=image]").val().trim()
     };
     console.log(newItem);
+
     // Send the POST request.
-    $.ajax("/admin", {
-      type: "POST",
-      data: newItem
-    }).then(
-      function () {
+    $.post("/admin", { data: newItem }).then(function () {
         console.log("created new item");
         // Reload the page to get the updated list
         location.reload();
-      }
-      );
+      });
   });
-
-
-  //Not sure what I'm doing here anymore...
-  function auth(authData) {
-      if (authData.pass !== /*authData from server*/) {
-          $("#txtPassword").empty();
-          $("#badCred").attr("class", "show"); /* I think? */
-      } else if (authData.txtUserName === "" || authData.txtPassword === "") {
-          $("#noCred").attr("class", "show"); /* I think? */
-      } else {
-          $.post("/dupeUser", {
-              user_name : authData.user_name,
-              password : authData.password
-          }).then(function(uData){
-              console.log(uData);
-              //
-      }
-  }
-
-
 
 
 });
