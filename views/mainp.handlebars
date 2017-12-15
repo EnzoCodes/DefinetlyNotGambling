@@ -8,6 +8,9 @@
         .images2 {
             display: none;
         }
+        .hidden-pack-items {
+            display: none;
+        }
     </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
@@ -16,6 +19,8 @@ $(document).ready(function(){
     $("#image").click(function(){
         $("p").hide();
         $(".images").show();
+    });
+
     });
     $("#1").click(function(){
         $("#1").hide();
@@ -63,9 +68,23 @@ $(document).ready(function(){
         <div class="class col-xs-4"></div>
     </div>
 
+ 
+
      <div class="class row">
         <div class="class col-xs-2"></div>
             <div class="class col-xs-8">
+                <div class="hidden-pack-items">
+                    {{#each newItems}}
+                        {{this.name}}
+                    {{/each}}
+                </div>
+
+                <div class="shown-pack-items">
+                    {{#each newItems}}
+                        {{this.name}}
+                    {{/each}}
+                </div>
+
                 <span class="images2" id="5"><img width="175px" src="assets/img/ice.png"></span>
                 <span class="images2" id="6"><img width="175px" src="assets/img/grape.png"></span>
                 <span class="images2" id="7"><img width="175px" src="assets/img/orange.png"></span>
