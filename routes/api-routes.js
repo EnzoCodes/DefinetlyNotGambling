@@ -20,10 +20,22 @@ module.exports = function(app) {
 	       });
 	});
 
+	app.post("/admin2", function(req, res) {
+	    //console.log(req.body); 
+	   db.Cat.create({
+	        name: req.body.name, 
+	        house: req.body.house, 
+	        tier: req.body.tier, 
+	        image: req.body.image
+	    }).then(function(){
+	        res.end(); 
+	       });
+	});
+
 	app.get("/api/open", function(req,res){
 		var items= [];
 		var tierChoice =[];
-
+		
 
 		// console.log("this is token: "+JSON.stringify(token));
 
@@ -74,8 +86,8 @@ module.exports = function(app) {
 						}
 					}).then(function(data3){
 						items.push(data3);
-						res.json(items);
-
+				res.json(items);
+					
 				});
 
 			});

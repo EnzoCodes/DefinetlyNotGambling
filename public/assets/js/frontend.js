@@ -1,8 +1,5 @@
 $(function(){
 
-
-
-
     $.post("/", {token: window.localStorage.getItem("token")}).then(function(data){
 
         if(!data){
@@ -60,4 +57,28 @@ $(function(){
       }
       );
   });
+
+  $("#createitem2").on("submit", function (event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+    var newItem = {
+      name: $("#createitem2 [name=name]").val().trim(),
+      house: $("#createitem2 [name=house]").val().trim(),
+      tier: $("#createitem2 [name=tier]").val().trim(),
+      image: $("#createitem2 [name=image]").val().trim()
+    };
+    console.log(newItem);
+    // Send the POST request.
+    $.ajax("/admin2", {
+      type: "POST",
+      data: newItem
+    }).then(
+      function () {
+        console.log("created new item");
+        // Reload the page to get the updated list
+        location.reload();
+      }
+      );
+  });
+
 });

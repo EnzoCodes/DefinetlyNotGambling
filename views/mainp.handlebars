@@ -48,7 +48,9 @@ $(document).ready(function(){
 
 
 <div class="class container">
-  
+    {{#each items}}
+  {{this.name}}
+{{/each}}
   <div class="row">
     <div class="col-xs-12">
       <h3>User Name</h3>

@@ -1,0 +1,32 @@
+
+  <script id="profile-template" type="text/x-handlebars-template">
+    <div class="module module-cat" style="background-image: url({{this.image}})">
+      <div class="cat-info">
+        <h3 class="cat-name">
+          {{name}}
+        </h3>
+        <p class="cat-house">
+          {{this.house}}
+        </p>
+      </div>
+    </div>
+  </script>
+
+  <section id="#cats">
+<h2>List of Cats</h2>
+ </section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+
+  var source = $("#profile-template").html(); 
+  var template = Handlebars.complie(source); 
+
+  //console.log(template);
+    
+  for (i = 0; i < data.Cat.length; i++) {
+      console.log(data.Cats.length); 
+    var html = template(data.Cat[i]);
+    $("#cats").append(html);
+  }
+
+</script>
