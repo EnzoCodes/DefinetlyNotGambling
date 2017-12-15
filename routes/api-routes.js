@@ -17,7 +17,7 @@ module.exports = function(app) {
 	        image: req.body.image
 	    }).then(function(){
 	        res.end(); 
-	       });
+	    });
 	});
 
 	app.get("/api/open", function(req,res){
@@ -74,7 +74,13 @@ module.exports = function(app) {
 						}
 					}).then(function(data3){
 						items.push(data3);
-						res.json(items);
+						// res.json(items);
+
+						var newPack = {
+      					list: items
+    					};
+
+     					res.render("mainp", newPack);
 
 				});
 

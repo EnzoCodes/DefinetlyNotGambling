@@ -50,13 +50,16 @@ module.exports = function(app) {
 
     app.get("/profile", function(req, res) {
         console.log(req.body);
+
         db.Item.findAll({}).then(function(data) {
             var hbsObject ={
               monsters: data
             };
-          //  console.log(hbsObject);
-            //console.log(hbsObject);
-            //res.render("partials/profile_page", hbsObject);
+
+
+            // console.log("HBS: " + hbsObject);
+            console.log("data: " + JSON.stringify(data));
+      
             res.render("index", hbsObject);
             // We have access to the todos as an argument inside of the callback function
 
