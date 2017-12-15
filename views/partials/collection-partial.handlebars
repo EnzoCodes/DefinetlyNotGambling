@@ -1,0 +1,24 @@
+
+
+  {{#each monsters }}
+
+    {{#if this.tier}}
+      <div class="col-xs-3 text-center" style="background-color: orange">
+        <h2>{{this.name}}</h2>
+        <p>Category: {{this.category}}</p>
+        <hp>Type: {{this.type}}</p>
+        <img height="200px" src="{{this.image}}">
+        <p>Movie: {{this.movie}}</p>
+      </div>
+
+    {{else}}
+      <div class="col-xs-3" >
+        <h2>{{this.name}}</h2>
+        <p>Category: {{this.category}}</p>
+        <hp>Type: {{this.type}}</p>
+        <img height="200px" src="{{this.image}}">
+        <p>Movie: {{this.movie}}</p>
+      </div>
+     {{/if}}
+
+  {{/each}}

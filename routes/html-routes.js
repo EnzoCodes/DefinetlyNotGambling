@@ -10,7 +10,7 @@ module.exports = function (app) {
   });
 
   app.get("/admin", function (req, res) {
-    res.render("admin");
+    res.render("admin-cats");
   });
 
   app.get("/home", function (req, res) {

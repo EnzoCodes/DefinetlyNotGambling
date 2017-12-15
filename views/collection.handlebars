@@ -1,4 +1,43 @@
+
 {{>nav-partial}}
 {{>user-partial}}  
-{{>coin-count-partial}}
-{{>leaderboard-partial}}
+ {{>coin-count-partial}}
+ {{>leaderboard-partial}}
+
+<style>
+    .images {
+        display: none;
+    }
+    .images2 {
+        display: none;
+    }
+    .hidden-pack-items {
+        display: none;
+    }
+</style>
+
+<div class="class container">
+
+  
+    <div class="class row">
+        <div class="class col-xs-2"></div>
+            {{#each hbsObject}}
+                <div class=" col-xs-3">
+                    {{this.name}}
+                   "House"  {{this.house}}
+                    <img height="150px" src="{{this.image}}">
+                </div>
+            {{/each}}
+        <div class="class col-xs-2"></div>
+    </div>
+      
+    <div class="class row">
+        <div class="class col-xs-2"></div>
+                <div class="images2 col-xs-3">
+                    <span class="images" id="1"><img width="175px" src="assets/img/qm.png"></span>
+                    <span class="images" id="2"><img width="175px" src="assets/img/qm.png"></span>
+                    <span class="images" id="3"><img width="175px" src="assets/img/qm.png"></span>
+                </div>
+        <div class="class col-xs-2"></div>
+    </div>
+</div>
