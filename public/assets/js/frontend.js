@@ -1,16 +1,12 @@
 $(function(){
 
-
-
-
     $.post("/", {token: window.localStorage.getItem("token")}).then(function(data){
 
         if(!data){
             window.localStorage.clear();
         } else {
-            // Set welcome message or already logged in.
-            $("#txtUserName").attr("href", "/????");
-
+            // Set welcome message or already logged in...
+            //????????????
             window.loclaStorage.clear();
         }
     });
@@ -60,4 +56,26 @@ $(function(){
       }
       );
   });
+
+
+  //Not sure what I'm doing here anymore...
+  function auth(authData) {
+      if (authData.pass !== /*authData from server*/) {
+          $("#txtPassword").empty();
+          $("#badCred").attr("class", "show"); /* I think? */
+      } else if (authData.txtUserName === "" || authData.txtPassword === "") {
+          $("#noCred").attr("class", "show"); /* I think? */
+      } else {
+          $.post("/dupeUser", {
+              user_name : authData.user_name,
+              password : authData.password
+          }).then(function(uData){
+              console.log(uData);
+              //
+      }
+  }
+
+
+
+
 });
