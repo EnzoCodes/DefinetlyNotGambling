@@ -74,8 +74,11 @@ module.exports = function(app) {
 						}
 					}).then(function(data3){
 						items.push(data3);
-						res.json(items);
-
+						// res.json(items);
+						var newPack = {
+							list: items
+						};
+						res.render("newpack", newPack);
 				});
 
 			});

@@ -12,7 +12,9 @@ module.exports = function (app) {
   app.get("/admin", function (req, res) {
     res.render("admin");
   });
-
+  app.get("/api/open", function (req, res) {
+    res.render("newpack");
+  });
   app.get("/profile", function (req, res) {
 
     db.Item.findAll({}).then(function (data) {
