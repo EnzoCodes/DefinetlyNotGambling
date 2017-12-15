@@ -1,68 +1,38 @@
 var db = require("../models");
 
-module.exports = function(app) {
-    app.get("/", function(req, res) {
+module.exports = function (app) {
+  app.get("/", function (req, res) {
+    res.render("login-page");
+  });
 
+  app.get("/register", function (req, res) {
+    res.render("login-page");
+  });
 
-          //  console.log(hbsObject);
-            //console.log(hbsObject);
-            //res.render("partials/profile_page", hbsObject);
-            res.render("mainp");
-            // We have access to the todos as an argument inside of the callback function
+  app.get("/admin", function (req, res) {
+    res.render("admin-cats");
+  });
 
-          });
-        // res.render("index")
+  app.get("/home", function (req, res) {
+    res.render("index");
+  });
 
-    app.get("/register", function(req, res) {
+  app.get("/api/open", function (req, res) {
+    res.render("open-pack");
+  });
 
+  app.get("/loot", function (req, res) {
+    res.render("open-pack");
+  });
 
-          //  console.log(hbsObject);
-            //console.log(hbsObject);
-            //res.render("partials/profile_page", hbsObject);
-            res.render("mainp");
-            // We have access to the todos as an argument inside of the callback function
-
-          });
-
-
-
-        // app.get("/login", function(req, res) {
-
-
-        //             //  console.log(hbsObject);
-        //               //console.log(hbsObject);
-        //               //res.render("partials/profile_page", hbsObject);
-        //               res.render("login_page");
-        //               // We have access to the todos as an argument inside of the callback function
-
-        //             });
-
-        app.get("/admin", function(req, res) {
-
-
-                    //  console.log(hbsObject);
-                      //console.log(hbsObject);
-                      //res.render("partials/profile_page", hbsObject);
-                      res.render("admin");
-                      // We have access to the todos as an argument inside of the callback function
-
-                    });
-
-    app.get("/profile", function(req, res) {
-        console.log(req.body);
-        db.Item.findAll({}).then(function(data) {
-            var hbsObject ={
-              monsters: data
-            };
-          //  console.log(hbsObject);
-            //console.log(hbsObject);
-            //res.render("partials/profile_page", hbsObject);
-            res.render("index", hbsObject);
-            // We have access to the todos as an argument inside of the callback function
-
-          });
-        // res.render("index")
-      });
+  app.get("/collection", function (req, res) {
+    db.Cat.findAll({}).then(function (data) {
+      var hbsObject = {
+        kitty: data
+      }; 
+      res.render("collection", hbsObject);
+    });
+  });
 
     app.get("/login-page", function(req, res){
         res.render("login-page");

@@ -1,6 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
+
+{{>nav-partial}}
+{{>user-partial}}  
+{{>coin-count-partial}}
+
     <style>
         .images {
             display: none;
@@ -8,14 +10,19 @@
         .images2 {
             display: none;
         }
+        .hidden-pack-items {
+            display: none;
+        }
     </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
-
 $(document).ready(function(){
     $("#image").click(function(){
         $("p").hide();
         $(".images").show();
+        $("#image").hide();
+
+    });
+
     });
     $("#1").click(function(){
         $("#1").hide();
@@ -34,7 +41,7 @@ $(document).ready(function(){
            $("#4").hide();
          $("#8").show();
     });
-});
+}
 </script>
 </head>
 <body>
@@ -49,23 +56,33 @@ $(document).ready(function(){
 
 <div class="class container">
   
-  <div class="row">
-    <div class="col-xs-12">
-      <h3>User Name</h3>
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL0AAAELCAMAAAC77XfeAAAAYFBMVEX///9/f3+IiIh7e3t1dXV4eHh8fHxzc3PFxcX7+/vOzs7m5ubU1NTy8vKAgIDZ2dns7Oyqqqq3t7eSkpKenp7f39++vr6Kioqvr6+jo6PAwMCRkZH19fWZmZmgoKDKyspi7EscAAAFDUlEQVR4nO2dC3bqOgxF48QOIfzDty2U+c/yhUBZFCi2rBjpvnX2CE6ELMuSbLIMAAAAAAAAAAAAAAAAAAAAAAAAAACAeOaz+lhV9XovLYTMrPmy1nXYwXYmLYfCeGVdUZor5WAnLSmU4aZ0N8rPuO1aWlcQjXX30jvz2201kdbmo3ZPtXf6nTWLSvFPMFnav7SfKZx1i5G0zOeM7YO/P/sCe5hLK31C4zH8zRrYSGt9YPWnxz/ilkNpub85EMS37pOr2oAplu+8J1dk/QVRfGv9g7TmK1Xogr3BVtKqL0wixLdLV4nrf4XE+QcKHanbMcr0rfGlhXcUceKN1ZAzfJLjzY/tj9LSW6aR4lU4/jrS69sd60Nae7tRxbq9KZfS2rMs1utb9Vtp7dko2nGMmUqLz6p42xsjLZ7h9m3QkRafbaOyhDPymy3D7Y2VFh+XXmpRzwk58upnnJAjrr7+p9Wzwr2VPplHp8edeum6bMPYrIyVLgmy1DvpivKOpb7+l9WLH644SVrr+MKuw1NfCpcDWZ4jniMz1QvvtqyIKW57nnrpczlPfSFc0dlw8hzjPmXVs3JM8XjPyu+lQw7vbCVeyJxzzrVuLKyeUcbUUM9hJDpFIy0+mw+i1VsFTcPoiO/kTd+yjKxkltLCOyKLgVbJoGBUllwspGVfiKplyvdNfoio4Wvxm5YJ2XU0tAuvzKlRUz5HuIVazhSvAf6G6Pk6Yv0VWtSUPhHeQ5tWUBRxOoY0x5eWew8l5itIje+g5PniPZMHCMfzciUt9oF9+LLVtVWdOQQ7vnir8Anj4AH2L2mpzwidKRXv9zwltDDltAwg/yZUvcJFmwUfz52yNOFC4Ial1PaBnQilfh+oXk014TehqY6ecsIteZh4YxU6/vAjOMvMpbXeM/pw4Smyovs+HYsB7VybK3Ke+ZRajirtVkHxvmMWdLfzXn+po6QzjuuelE7D+XAW2/opp/KnlGN836qQLsUOV6x+rWzOUBGC/DOsXGFnWE1ZQwqS8keLvx8fIOC+3790R01ueT5zpSg377xuOFzvpn1JP+u3efOenWv0eSh6lf7zAanf6RiuN4fSPj5w0g+ls4dUmdu83m1tMuXXDzC7vj1oP2tOJi/SKr9w8qDeYtC+XuSDNwm/0HrQRx+jdqPNl2VupXEUdtowl/AsT+3mLz9gcKgZHjSJOXD0SetB39HXznlj9X19gImLocT+ZTLsMmYBHJWob0/vEe4TO2qWAEseCiD0/9LjqKUr3mh03zii9b/1OM4J4kyGgnB5S0mq2rLuK6eAdMmAdxsjAaQOb3jP/k2QuuvK3N6Q2hWs6wxpIAzh6Yr2HYQBSObluxQQ3mhSt2hJg7/6TE9wHYWLltBfH+tbtCZ8jJB53zcRoSOc0c+fpSVsuEFdinYh7Fk+hdG+I2yqh/MOVErK7xD18Q3M1ASIj3/1LzUhMZP1Hk5SQkYJV0rdPuwGvdKIY4LuqrCeP0uM/4ClM8k547/HrXWvOuEPOgpPJlf8QUex4/hzBc2L1l+T0rxo/VeFNooXrT/F17vTnvC9maL0XHXBEzL3etPjE56H+fSmxx2eh/l4DxElx1NX0NAhf4Eny4z7B4S34WlC6Da9J8tUnSecePngzlr3ovVUpNTMVvzFy1tyygOmJ0fWb/tXOXI9zZWj7AkMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA/zH/ATNiUg67mezLAAAAAElFTkSuQmCC"></div>
-  </div>
-  
     <div class="class row">
         <div class="class col-xs-4"></div>
             <div class="class col-xs-4">
-                <p><img id="image" height="300px" src="assets/img/Treasure_Chest.png"></p>
+
+                <img id="image" src="assets/img/Treasure_Chest.png" height="300px" style="border:1px solid black;max-width:100%;" alt="Photo of Byron Bay, one of Australia's best beaches!">
+    
             </div>
         <div class="class col-xs-4"></div>
     </div>
 
+ 
+
      <div class="class row">
         <div class="class col-xs-2"></div>
             <div class="class col-xs-8">
+                <div class="hidden-pack-items">
+                    {{#each newItems}}
+                        {{this.name}}
+                    {{/each}}
+                </div>
+
+                <div class="shown-pack-items">
+                    {{#each newItems}}
+                        {{this.name}}
+                    {{/each}}
+                </div>
+
                 <span class="images2" id="5"><img width="175px" src="assets/img/ice.png"></span>
                 <span class="images2" id="6"><img width="175px" src="assets/img/grape.png"></span>
                 <span class="images2" id="7"><img width="175px" src="assets/img/orange.png"></span>
@@ -94,3 +111,40 @@ $(document).ready(function(){
 </div>
 </body>
 </html>
+
+<style>
+    .images {
+        display: none;
+    }
+    .images2 {
+        display: none;
+    }
+    .hidden-pack-items {
+        display: none;
+    }
+</style>
+
+<div class="class container">
+  
+    <div class="class row">
+        <div class="class col-xs-2"></div>
+            {{#each list}}
+                <div class=" col-xs-3">
+                    {{this.name}}
+                   "House"  {{this.house}}
+                    <img height="150px" src="{{this.image}}">
+                </div>
+            {{/each}}
+        <div class="class col-xs-2"></div>
+    </div>
+      
+    <div class="class row">
+        <div class="class col-xs-2"></div>
+                <div class="images2 col-xs-3">
+                    <span class="images" id="1"><img width="175px" src="assets/img/qm.png"></span>
+                    <span class="images" id="2"><img width="175px" src="assets/img/qm.png"></span>
+                    <span class="images" id="3"><img width="175px" src="assets/img/qm.png"></span>
+                </div>
+        <div class="class col-xs-2"></div>
+    </div>
+</div>

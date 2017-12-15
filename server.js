@@ -8,6 +8,7 @@ var randtoken = require("rand-token");
 var PORT = process.env.PORT || 8080;
 var app = express();
 
+app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.text());
