@@ -135,5 +135,4 @@ module.exports = function (app) {
 		});
 	});
 
-
 };

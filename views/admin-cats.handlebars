@@ -1,9 +1,12 @@
- {{>nav-partial}}
+
+<!--This is the admin page to add an item to our cats/item table. Currently it is set to cats from game of thrones but we can adjust when we decide what our item table should contain. The create/post request is working for this page. Because it doesn't seem like we will be using delete/put requests anywhere else in our app, (unless we have time to code the user trade in idea) we might need to add an update/delete option on this page in order to make our ap "restful".-->
+{{>nav-partial}}
+
 <div class="container">
 
   <div class="row">
     <div class="col s12 center-align">
-      <h4>So much Treasure!</h4>
+      <h4 class="teal-text">Here Kitty Kitty!</h4>
     </div>
     <!--col-->
   </div>
@@ -11,7 +14,7 @@
 
   <div class="row">
     <div class="col s12 center-align">
-      <img src="assets/img/Treasure_Chest.png" alt="Treasure Chest" height="100px">
+      <img src="assets/img/chest.png" alt="Treasure Chest" height="150px">
       <br>
     </div>
     <!--col-->
@@ -27,23 +30,27 @@
   <!--row-->
 
   <div class="row">
-    <form id="createitem2" class="button-size">
-      <div class="col s4">
-        Name:
-        <textarea rows="1" cols="15" type="text" name="name"></textarea>
-      </div>
-      <!--col-->
+
+    <form id="createitem2" class="col s12">
+      <div class="input-field col s3">
+        <input placeholder="Character Name" name="name" type="text" class="validate">
+          <label for="name">name</label>
+      </div><!--col-->
 
       <div class="input-field col s2">
         <select name="house">
           <option value="" disabled selected>House</option>
           <option value="Stark">Stark</option>
+          <option value="Tyrell">Targaryen</option>
           <option value="Lannister">Lannister</option>
           <option value="Tyrell">Tyrell</option>
+          <option value="Tyrell">Tully</option>
+          <option value="Tyrell">Martel</option>
+          <option value="Tyrell">Greyjoy</option>
+          <option value="Tyrell">Baratheon</option>
           <option value="Other">Other</option>
         </select>
-      </div>
-      <!--col-->
+      </div><!--col-->
 
       <div class="input-field col s2">
         <select name="tier">
@@ -53,31 +60,27 @@
           <option value="2">2</option>
           <option value="1">1</option>
         </select>
-      </div>
-      <!--col-->
+      </div><!--col-->
 
-      <div class="col s2">
-        Image
-        <Link:im></Link:im>:
-        <textarea rows="1" cols="15" type="text" name="image"></textarea>
-      </div>
-      <!--col-->
-      <div class="col s2">
-        House Image
-        <Link:im></Link:im>:
-        <textarea rows="1" cols="15" type="text" name="houseImage"></textarea>
-      </div>
-      <!--col-->
- </div>
-  <!--row-->
-      <br>
+      <div class="input-field col s3">
+        <input placeholder="Charater Image" name="image" type="text" class="validate">
+          <label for="name">character-name</label>
+      </div><!--col-->
 
-      <div class="row">
-        <div class="col s12 center-align">
-          <button class="saveitem2 center-align waves-effect waves-light btn" type="submit">Submit</button>
-        </div>
-        <!--col-->
-      </div>
+      <div class="input-field col s2">
+        <input placeholder="House Image" name="houseImage" type="text" class="validate">
+          <label for="name">house-image</label>
+      </div><!--col-->
+
+  </div><!--row-->
+  
+  <br>
+
+  <div class="row">
+    <div class="col s12 center-align">
+      <button class="center-align waves-effect waves-light btn" type="submit">Submit</button>
+    </div><!--col-->
+  </div><!--row-->
 
     </form>
  

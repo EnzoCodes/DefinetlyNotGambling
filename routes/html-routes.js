@@ -34,4 +34,13 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/*", function (req, res) {
+    db.User.findOne({}).then(function (data) {
+      var coinCount = {
+        coins: data.coin_count
+      }; 
+      res.render("/*", coinCount);
+    });
+  });
+
 };
