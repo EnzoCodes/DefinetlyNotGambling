@@ -5,7 +5,7 @@ var randtoken = require("rand-token");
 module.exports = function(app) {
 
 
-
+    //Log-in logic...
     app.post("/logAttempt", function(req, res){
 
         db.User.findOne({
@@ -34,27 +34,8 @@ module.exports = function(app) {
         })
     });
 
-    //This route activates upon successfull login attempt.
-    // HTML routes - Should direct to main page if success.
-    // app.get("/loggedIn", function(req, res){
-    //     //Generate Token
-    //     var token = randtoken.generate(16);
-    //     //Update DB with new token on matching USER/PASS
-    //     db.User.update({
-    //         token: token
-    //     }, {
-    //         where: {
-    //             user_name: req.body.user_name,
-    //             password: req.body.password
-    //         }
-    //     }).then(function(dbRes) {
-    //         //Return logged in user data...unfortunately including password.
-    //         res.json(dbRes);
-    //     })
-    // });
-
     //Already logged in!?
-    // Make the / route hit our main page.
+    // Make the / route hit our main page...or not...
     app.post("/", function(req, res){
         db.User.findOne({
             where: {
@@ -66,8 +47,7 @@ module.exports = function(app) {
     });
 
 
-    //Sign-up button logic...
-    // HTML routes - Should push us to main page if /existingUser check is passed.
+    //Sign-up Logic...
     app.post("/register", function(req, res) {
         var token = randtoken.generate(16);
         db.User.create({
@@ -91,6 +71,7 @@ module.exports = function(app) {
         })
     });
 
+    //End Sign-up Logic.
 
 }; //
 
