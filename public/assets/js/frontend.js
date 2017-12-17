@@ -76,7 +76,7 @@ $(function(){
 
     $("#btnLogin").on("click", function(event){
         event.preventDefault();
-    
+
     });
 
 //   $("#createitem").on("submit", function (event) {
@@ -126,14 +126,9 @@ $(function(){
         console.log("created new item");
         // Reload the page to get the updated list
         location.reload();
-<<<<<<< HEAD
       });
   });
-=======
-      }
-      );
-  });//Create Item Function Close
->>>>>>> fridayfec
+
 
   //I believe this is the broken code re: Var id
   // $(".delete-item").on("click", function(event) {
