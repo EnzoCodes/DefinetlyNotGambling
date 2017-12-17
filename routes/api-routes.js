@@ -84,4 +84,16 @@ module.exports = function(app) {
 
 	});
 
+	app.get("api/collection",function(req,res){
+
+		
+
+
+	})
+
+
+
+
+
+
 };
