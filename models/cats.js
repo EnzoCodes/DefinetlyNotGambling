@@ -19,12 +19,10 @@ module.exports = function(sequelize, DataTypes) {
           image: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: { len: [1,140]}
+            validate: { len: [1,500]}
           }, 
           houseImage: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: { len: [1,140]}
+            type: DataTypes.STRING
           }
         }, {
           timestamps:false

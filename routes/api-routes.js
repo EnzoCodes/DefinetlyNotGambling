@@ -5,7 +5,6 @@ var randtoken = require("rand-token");
 module.exports = function (app) {
 
 	app.post("/admincreate", function (req, res) {
-
 		db.Cat.create({
 			name: req.body.name,
 			house: req.body.house,
@@ -14,8 +13,19 @@ module.exports = function (app) {
 			image: req.body.image
 		}).then(function () {
 			res.end();
-		});
-	});
+		});//Create Function Close
+	});//Post Function Close
+
+	app.delete("/admin/:id", function(req, res) {
+		db.cat.destroy({
+			where: {
+				id: req.params.id 
+			}
+		}).then(function () {
+			res.end(); 
+		});//Destroy Function Close 
+	});//Delete Function Close 
+	
 
 	app.get("/api/open", function (req, res) {
 		var items = [];
@@ -133,7 +143,9 @@ module.exports = function (app) {
 				});
 			});
 		});
-	});
+	});//Random Get Request Function Close 
 
+	
+	
 
 };

@@ -1,8 +1,17 @@
+ {{>nav-partial}}
 
-{{>nav-partial}}
-{{>user-partial}}  
-{{>coin-count-partial}}
-
+ <div class="container" style="width: 100%"></div>
+ <br>
+  <div class="row">
+    <div class="col s6">
+      <div class="left-align">{{>user-partial}}</div>
+    </div>
+    <div class="col s6">
+      <div class="right-align">{{>leaderboard-partial}}</div>
+    </div>
+  
+  </div><!--row-->
+ </div><!--container-->
 {{!-- <style>
     .images {
         display: none;
@@ -18,24 +27,16 @@
 <div class="class container">
 
     <div class="class row">
-        <div class="class col s2"></div>
             {{#each kitty}}
                 <div class="col s4">
-                    {{this.name}}
-                   "House"  {{this.house}}
-                    <img height="150px" src="{{this.image}}">
+                    <img width="200px" src="{{this.image}}">
                 </div>
             {{/each}}
         <div class="class s2"></div>
     </div>
+    <div>
       
-    <div class="class row">
-        <div class="class col-xs-2"></div>
-                <div class="images2 col-xs-3">
-                    <span class="images" id="1"><img width="175px" src="assets/img/qm.png"></span>
-                    <span class="images" id="2"><img width="175px" src="assets/img/qm.png"></span>
-                    <span class="images" id="3"><img width="175px" src="assets/img/qm.png"></span>
-                </div>
-        <div class="class col-xs-2"></div>
+
     </div>
+ 
 </div>
