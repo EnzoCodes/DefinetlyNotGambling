@@ -81,6 +81,25 @@ $(function(){
         location.reload();
       }
       );
-  });
+  });//Create Item Function Close
 
-});
+  //I believe this is the broken code re: Var id
+  // $(".delete-item").on("click", function(event) {
+  //   event.preventDefault();
+
+  //   var id = $(this).data("id");
+  //   console.log(id);
+  //   // Send the DELETE request.
+  //   $.ajax("/admin/" + id, {
+  //     type: "DELETE",
+  //     data:id
+  //   }).then(
+  //     function() {
+  //       console.log("deleted id ", id);
+  //       // Reload the page to get the updated list
+  //       location.reload();
+  //     }
+  //   );
+  // });//Delete Item Function Close
+
+});//Main Function Close
