@@ -1,23 +1,10 @@
 $(function(){
 
-    // $.post("/", {token: window.localStorage.getItem("token")}).then(function(data){
-    //
-    //     if(!data){
-    //         window.localStorage.clear();
-    //     } else {
-    //         // Set welcome message or already logged in...
-    //         //????????????
-    //         window.loclaStorage.clear();
-    //     }
-    // });
 
-    //     if(!data){
-    //         window.localStorage.clear();
-    //     } else {
-    //         // Set welcome message or already logged in.
-    //         $("#txtUserName").attr("href", "/????");
+    // Passes token to DB to check if local storage token matches DB token.
+    // Then either clears local storage and boots user to login or fills partials.
 
-    // Not sure what I'm doing here anymore...
+
     $("#btnLogin").on("click", function(event) {
         event.preventDefault();
         //Grab user...
@@ -68,16 +55,17 @@ $(function(){
                         console.log("New User created!");
                         console.log(userData);
                         window.localStorage.setItem("token", userData.identity);
+                        window.location.href = "/home";
                     })
                 }
             });
         }
       });
 
-    $("#btnLogin").on("click", function(event){
-        event.preventDefault();
-
-    });
+      $("#btnLogout").on("click", function(){
+        window.localStorage.clear();
+        window.location.href = "/"; /* NOTE: Perhaps change this to home page */
+      });
 
 //   $("#createitem").on("submit", function (event) {
 //     // Make sure to preventDefault on a submit event.
@@ -130,6 +118,7 @@ $(function(){
   });
 
 
+<<<<<<< HEAD
   //I believe this is the broken code re: Var id
   // $(".delete-item").on("click", function(event) {
   //   event.preventDefault();
@@ -150,3 +139,7 @@ $(function(){
   // });//Delete Item Function Close
 
 });//Main Function Close
+=======
+
+}); // End of document ready / 'body' function.
+>>>>>>> tracking
