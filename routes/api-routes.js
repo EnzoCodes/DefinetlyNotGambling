@@ -82,7 +82,7 @@ module.exports = function (app) {
 					var newPack = {
 						list: items
 					};
-					res.render("newpack", newPack);
+					res.json(newPack);
 				});
 			});
 		});
