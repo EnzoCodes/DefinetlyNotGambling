@@ -119,7 +119,7 @@ $(function(){
               window.localStorage.clear();
               window.location.href = "/";
           } else {
-              console.log(JSON.stringify(res));
+
               var username = res.user_name;
               var coin = res.coin_count += 100;
 
@@ -138,6 +138,32 @@ $(function(){
       })
   });
 
+  //Logic to remove coins. Shold be placed somewhere inside 'open-box' button.
+
+  // $.post("/", {token: window.localStorage.getItem("token")}).then(function(res){
+  //     if(!res) {
+  //         window.localStorage.clear();
+  //         window.location.href = "/";
+  //     } else {
+  //
+  //         var username = res.user_name;
+  //         var coin = res.coin_count -= 25;
+  //
+  //         console.log(JSON.stringify(username));
+  //         console.log(JSON.stringify(coin));
+  //
+  //         $.ajax({
+  //             method: "PUT",
+  //             url: "/api/removeCoin",
+  //             data: {
+  //                 coin: coin,
+  //                 username: username
+  //             }
+  //         }).done(console.log("Coin count Updated"));
+  //     }
+  // });
+
+  //TODO: ^^ Add this to 'open-box' button.
 
 
 });//Main Function Close

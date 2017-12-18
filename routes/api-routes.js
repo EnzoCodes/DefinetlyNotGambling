@@ -104,5 +104,20 @@ module.exports = function (app) {
 	  });
 
 
+	  app.put("/api/removeCoin", function(req, res){
+
+		  db.User.update({
+			  coin_count: req.body.coin
+		  }, {
+			  where: {
+				  user_name: req.body.username
+			  }
+		  }).then(function(dbPost) {
+			  res.end();
+		  });
+
+		});
+
+
 
 };//Main Function Close
