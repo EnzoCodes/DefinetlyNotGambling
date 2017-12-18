@@ -8,26 +8,6 @@
     .hidden-pack-items {
         display: none;
     }
-    .images--effect-boris::after {
-	background: rgba(111,148,182,0.1);
-}
-
-.cbutton--effect-boris.cbutton--click::after {
-	animation: anim-effect-boris 0.3s forwards;
-}
-
-@keyframes anim-effect-boris {
-	0% {
-		transform: scale3d(0.3, 0.3, 1);
-	}
-	25%, 50% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-		transform: scale3d(1.2, 1.2, 1);
-	}
-}
 
 </style>
 
@@ -52,6 +32,11 @@
             <span class="images2" id="5"><img width="275px" src="https://i.imgur.com/Jnc9cMV.png"></span>
             <span class="images2" id="6"><img width="275px" src="https://i.imgur.com/dOXHUw2.png"></span>
             <span class="images2" id="7"><img width="275px" src="https://i.imgur.com/ccac2hc.png"></span>
+
+            {{#each list}}
+            <h1>{{this.name}}</h1>
+            {{/each}}
+
             <span class="images" id="1"><img width="325px" src="assets/img/other/qm.png"></span>
             <span class="images" id="2"><img width="325px" src="assets/img/other/qm.png"></span>
             <span class="images" id="3"><img width="325px" src="assets/img/other/qm.png"></span>
@@ -91,7 +76,7 @@ $(document).ready(function(){
          $("#2").hide();
          $("#6").show();
     });
-    $("#3").click(function(){
+    $("#3").click(function(){ s
          $("#3").hide();
          $("#7").show();
     });
@@ -99,4 +84,10 @@ $(document).ready(function(){
            $("#4").hide();
          $("#8").show();
     });
+
+    $(document).on('click','img',function(){
+ 
+    return {{list}};
+    });
+
     </script>

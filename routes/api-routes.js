@@ -27,7 +27,33 @@ module.exports = function (app) {
 			res.end(); 
 		});//Destroy Function Close 
 	});//Delete Function Close 
+
+	// app.put("/admin/:id", function(req, res) {
+		
+	// 			console.log(req.params.id);
+	// 			db.Item.update(req.body,
+	// 				{
+	// 				where: {
+	// 					id: req.body.id 
+	// 				}
+	// 			}).then(function (dbPOst) {
+	// 				res.end(); 
+	// 			});//Destroy Function Close 
+	// 		});//Delete Function Close 
 	
+
+			// app.put("/api/posts", function(req, res) {
+			// 	db.Post.update(req.body,
+			// 	  {
+			// 		where: {
+			// 		  id: req.body.id
+			// 		}
+			// 	  })
+			// 	.then(function(dbPost) {
+			// 	  res.json(dbPost);
+			// 	});
+			//   });
+			// };
 
 	app.get("/api/open", function (req, res) {
 		var items = [];
@@ -82,7 +108,9 @@ module.exports = function (app) {
 					var newPack = {
 						list: items
 					};
-					res.render("newpack", newPack);
+					console.log(newPack); 
+					//res.render("open-pack");
+					res.json(newPack);
 				});
 			});
 		});

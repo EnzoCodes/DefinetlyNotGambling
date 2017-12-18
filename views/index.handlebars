@@ -12,10 +12,17 @@
     </div>
   </div><!--row-->
 
-  <div class="row">
+  <div class="row poop">
     <div class="col s12 center-align">
       <img class="z-depth-5" height="500px"src="https://i.imgur.com/xZM2Cvc.jpg" alt="Loot Box">
     </div>
   </div>
-
+   
  </div><!--container-->
+ <script>
+    var poop = window.localStorage.getItem("Poop");
+    console.log(JSON.parse(poop).list[0].name);
+
+    {{!-- $(".poop").append(poop.list[0].name); --}}
+    
+ </script>

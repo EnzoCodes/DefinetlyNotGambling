@@ -39,7 +39,7 @@ module.exports = function(app) {
     app.post("/", function(req, res){
         db.User.findOne({
             where: {
-                token: req.body.token
+                identity: req.body.token
             }
         }).then(function(dbRes) {
             res.json(dbRes);

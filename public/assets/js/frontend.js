@@ -3,6 +3,7 @@ $(function(){
 
     // Passes token to DB to check if local storage token matches DB token.
     // Then either clears local storage and boots user to login or fills partials.
+    
 
 
     $("#btnLogin").on("click", function(event) {
@@ -111,6 +112,21 @@ $(function(){
       }
     );
   });//Delete Item Function Close
+  $("#image").on("click", function() {
+   
+
+    $.ajax("/api/open", {
+      type: "GET"
+    }).then(
+      function(data) {
+        console.log("this worked", data);
+        window.localStorage.setItem("Poop", JSON.stringify(data))
+        console.log(data.list);
+        // Reload the page to get the updated list
+      }
+    );
+  });//Delete Item Function Close
+
 
 });//Main Function Close
 
