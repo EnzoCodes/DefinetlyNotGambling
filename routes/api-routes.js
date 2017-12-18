@@ -29,7 +29,7 @@ module.exports = function (app) {
 	});//Delete Function Close
 
 
-	app.get("/api/open", function (req, res) {
+	app.get("/api/open/:identity", function (req, res) {
 		var items = [];
 		var tierChoice = [];
 
@@ -52,6 +52,23 @@ module.exports = function (app) {
 				}
 			}
 		}
+
+		var identity = req.params.identity;
+
+		console.log(identity);
+
+		var id; 
+
+		db.User.findOne({
+			where:{
+				identity:req.params.identity
+				// id:3
+				}
+			}).then(function(data){
+				// id = data;
+				// console.log("data id: "+data.id);
+				id = data.id;
+			});
 
 		packopen();
 
@@ -82,7 +99,25 @@ module.exports = function (app) {
 					var newPack = {
 						list: items
 					};
+					// console.log(newPack.list[0].id);
+
+					for(var i = 0;i<newPack.list.length;i++){
+						// closure function to make sure i++ waits for create to finish
+						// (function(i){})(i);
+						console.log("id: "+newPack.list[i].id);
+
+						db.user2items.create({
+							ItemId:newPack.list[i].id,
+							UserId: id
+						}).then(function(data){
+							// console.log(data);
+						});
+
+
+					}
+					// console.log(newPack);
 					res.json(newPack);
+
 				});
 			});
 		});

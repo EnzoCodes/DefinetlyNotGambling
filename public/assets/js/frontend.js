@@ -165,8 +165,9 @@ $(function(){
 
   $("#image").on("click", function() {
     
- 
-     $.ajax("/api/open", {
+    var identity = window.localStorage.getItem("token");   
+    console.log(identity);
+     $.ajax("/api/open/"+identity, {
        type: "GET"
      }).then(
        function(data) {
@@ -180,7 +181,7 @@ $(function(){
  
  
 
-        });//Main Function Close
+});//Main Function Close
 
   //Logic to remove coins. Shold be placed somewhere inside 'open-box' button.
 
