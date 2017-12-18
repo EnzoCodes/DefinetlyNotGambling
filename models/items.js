@@ -1,45 +1,38 @@
 
 module.exports = function(sequelize, DataTypes) {
-
-    var Item = sequelize.define("Item", {
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: { len: [1,140]}
-      },
-      movie: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: { len: [1,140]}
-      },
-      type: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: { len: [1,140]}
-      },
-      category: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: { len: [1,140]}
-      },
-      tier: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-      },
-      image: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: { len: [1,140]}
-      }
-    }, {
-      timestamps:false
-    });
-
-  Item.associate = function(models) {
-    // in a many-to-many relationship, where an author can belong to many posts and vice versa, we will actually need a third table to store all of the possibilities. the "through" property will create that third table for us.
-    Item.belongsToMany(models.User, {
-      through: "user2items"
-    });
-  };
-    return Item;
-  };
+    
+        var Item = sequelize.define("Item", {
+          name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: { len: [1,140]}
+          },
+          house: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: { len: [1,140]}
+          },
+          tier: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+          },
+          image: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: { len: [1,500]}
+          }, 
+          houseImage: {
+            type: DataTypes.STRING
+          }
+        }, {
+          timestamps:false
+        });
+    
+      Item.associate = function(models) {
+      
+        Item.belongsToMany(models.User, {
+          through: "user2items"
+        });
+      };
+        return Item;
+      };

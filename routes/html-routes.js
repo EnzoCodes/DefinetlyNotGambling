@@ -27,7 +27,7 @@ module.exports = function (app) {
 
   //NEED TO EDIT CODE TO REFLECT A USER SEPCIFIC COLLECTION ONCE WE DO THAT LOGIC//
   app.get("/collection", function (req, res) {
-    db.Cat.findAll({}).then(function (data) {
+    db.Item.findAll({}).then(function (data) {
       var hbsObject = {
         kitty: data
       }; 
@@ -38,8 +38,9 @@ module.exports = function (app) {
     app.get("/login-page", function(req, res){
         res.render("login-page");
     })
-  app.get("/admin", function (req, res) {
-    db.Cat.findAll({}).then(function (data) {
+    
+    app.get("/admin", function (req, res) {
+    db.Item.findAll({}).then(function (data) {
       var hbsObject = {
         kitty: data
       }; 

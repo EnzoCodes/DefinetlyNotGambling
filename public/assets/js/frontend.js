@@ -40,8 +40,6 @@ $(function(){
         }
     });
 
-
-
     // Sign-Up BUTTON!
     $("#btnSignUp").on("click", function(event) {
         // Page doesn't reload.
@@ -79,32 +77,6 @@ $(function(){
     
     });
 
-//   $("#createitem").on("submit", function (event) {
-//     // Make sure to preventDefault on a submit event.
-//     event.preventDefault();
-//     var newItem = {
-//       name: $("#createitem [name=name]").val().trim(),
-//       movie: $("#createitem [name=movie]").val().trim(),
-//       type: $("#createitem [name=type]").val().trim(),
-//       category: $("#createitem [name=category]").val().trim(),
-//       tier: $("#createitem [name=tier]").val().trim(),
-//       image: $("#createitem [name=image]").val().trim()
-//     };
-//     console.log(newItem);
-//     // Send the POST request.
-//     $.ajax("/admin3", {
-//       type: "POST",
-//       data: newItem
-//     }).then(
-//       function () {
-//         console.log("created new item");
-//         // Reload the page to get the updated list
-//         location.reload();
-//       }
-//       );
-//   });
-
-
   $("#createitem2").on("submit", function (event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
@@ -126,32 +98,31 @@ $(function(){
         console.log("created new item");
         // Reload the page to get the updated list
         location.reload();
-<<<<<<< HEAD
       });
   });
-=======
+
+    $("#admin").on("click", function (){
+        window.location.href = "/admin";
+    });
+
+//   I believe this is the broken code re: Var id
+  $(".delete-item").on("click", function(event) {
+    event.preventDefault();
+
+    var id = $(this).data("id");
+    console.log(id);
+    // Send the DELETE request.
+
+    
+    $.ajax("/admin/" + id, {
+      type: "DELETE"
+    }).then(
+      function() {
+        console.log("deleted id ", id);
+        // Reload the page to get the updated list
+        location.reload();
       }
-      );
-  });//Create Item Function Close
->>>>>>> fridayfec
-
-  //I believe this is the broken code re: Var id
-  // $(".delete-item").on("click", function(event) {
-  //   event.preventDefault();
-
-  //   var id = $(this).data("id");
-  //   console.log(id);
-  //   // Send the DELETE request.
-  //   $.ajax("/admin/" + id, {
-  //     type: "DELETE",
-  //     data:id
-  //   }).then(
-  //     function() {
-  //       console.log("deleted id ", id);
-  //       // Reload the page to get the updated list
-  //       location.reload();
-  //     }
-  //   );
-  // });//Delete Item Function Close
+    );
+  });//Delete Item Function Close
 
 });//Main Function Close
