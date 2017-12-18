@@ -138,6 +138,20 @@ $(function(){
       })
   });
 
+
+        $.ajax("/api/open", {
+            type: "GET"
+        }).then(
+            function(data) {
+            console.log("this worked", data);
+            window.localStorage.setItem("Poop", JSON.stringify(data))
+            console.log(data.list);
+            // Reload the page to get the updated list
+            }
+        );
+
+        });//Main Function Close
+
   //Logic to remove coins. Shold be placed somewhere inside 'open-box' button.
 
   // $.post("/", {token: window.localStorage.getItem("token")}).then(function(res){
@@ -166,4 +180,3 @@ $(function(){
   //TODO: ^^ Add this to 'open-box' button.
 
 
-});//Main Function Close
