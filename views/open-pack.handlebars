@@ -5,6 +5,10 @@
     .images2 {
         display: none;
     }
+    #1:hover {
+    -webkit-transition:3s;
+    transform: rotateY(360deg);
+    }
 </style>
 
  {{>nav-partial}}
@@ -12,18 +16,18 @@
  <div class="container" style="width: 100%"></div>
  <br>
   <div class="row">
-    <div class="col s12">
+    <div id="leader" class="col s12 point">
       <div class="right-align">{{>leaderboard-partial}}</div>
     </div>
   </div><!--row-->
 </div>
- <br><br><br><br><br><br><br><br><br><br>
-    <div class="row valign-wrapper">
+ <br><br><br><br><br>
+    <div class="row valign-wrapper" >
         <div class="col s12 center-align">
             <img id="image" class=" center-align" src="assets/img/other/chest.png" height="400px">
-            <span class="images" ><img id="1"height="600px" src="assets/img/other/qm.png"></span>
-            <span class="images" ><img id="2" width="600px" src="assets/img/other/qm.png"></span>
-            <span class="images" ><img id="3"width="600px" src="assets/img/other/qm.png"></span>
+            <span class="images" ><img id="1"height="400px" src="assets/img/other/qm.png"></span>
+            <span class="images" ><img id="2" width="400px" src="assets/img/other/qm.png"></span>
+            <span class="images" ><img id="3"width="400px" src="assets/img/other/qm.png"></span>
         </div><!--col-->
     </div><!--row-->
 
@@ -37,7 +41,7 @@
         });
 
         $("#1").click(function(){
-            var clickSound = new Audio("assets/arena.mp3");
+            var clickSound = new Audio("assets/sounds/arena.mp3");
             clickSound.play();
             var poop = window.localStorage.getItem("Poop");
             var tier1  = (JSON.parse(poop).list[0].tier); 
@@ -85,6 +89,8 @@
         });
 
         $("#2").click(function(){
+            var clickSound = new Audio("assets/sounds/arena.mp3");
+            clickSound.play();
             var poop = window.localStorage.getItem("Poop");
             var tier1  = (JSON.parse(poop).list[1].tier); 
             var pimage = JSON.parse(poop).list[1].image;
@@ -117,6 +123,8 @@
                     console.log(JSON.stringify(username));
                     console.log(JSON.stringify(poi));
 
+                    //$("#point-button").html(); 
+
                     $.ajax({
                         method: "PUT",
                         url: "/api/addPoints",
@@ -130,6 +138,8 @@
         });
 
         $("#3").click(function(){
+            var clickSound = new Audio("assets/sounds/arena.mp3");
+            clickSound.play();
             var poop = window.localStorage.getItem("Poop");
             var tier1  = (JSON.parse(poop).list[2].tier); 
             var pimage = JSON.parse(poop).list[2].image;
