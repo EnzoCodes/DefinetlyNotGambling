@@ -1,10 +1,17 @@
 $(function(){
 
+    // //Initial sign in check...
+    // $.post("/", {token: window.localStorage.getItem("token")}).then(function(res){
+    //     if(!res) {
+    //         window.localStorage.clear();
+    //         window.location.href = "/";
+    //     } else {
+    //         console.log("User authenticated: " + res.user_name);
+    //     }
+    // });
 
     // Passes token to DB to check if local storage token matches DB token.
     // Then either clears local storage and boots user to login or fills partials.
-
-
     $("#btnLogin").on("click", function(event) {
         event.preventDefault();
         //Grab user...
@@ -60,12 +67,14 @@ $(function(){
         }
       });
 
-      //Logout button
+  //Logout button
   $("#btnLogout").on("click", function(){
     window.localStorage.clear();
     window.location.href = "/"; /* NOTE: Perhaps change this to home page */
   });
 
+
+  //Create Item
   $("#createitem2").on("submit", function (event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
@@ -90,11 +99,12 @@ $(function(){
       });
   });
 
+    //Links to Admin page.
     $("#admin").on("click", function (){
         window.location.href = "/admin";
     });
 
-//   I believe this is the broken code re: Var id
+  //Delete item (admin page ONLY)
   $(".delete-item").on("click", function(event) {
     event.preventDefault();
 
@@ -113,6 +123,8 @@ $(function(){
     );
   });//Delete Item Function Close
 
+
+  //Add Coins to account.
   $("#coinBtn").on("click", function(){
       $.post("/", {token: window.localStorage.getItem("token")}).then(function(res){
           if(!res) {
@@ -122,9 +134,6 @@ $(function(){
 
               var username = res.user_name;
               var coin = res.coin_count += 100;
-
-              console.log(JSON.stringify(username));
-              console.log(JSON.stringify(coin));
 
               $.ajax({
                   method: "PUT",
@@ -138,34 +147,10 @@ $(function(){
       })
   });
 
-//   $(".images").on("click", function(){
-//     $.post("/", {token: window.localStorage.getItem("token")}).then(function(res){
-//         if(!res) {
-//             window.localStorage.clear();
-//             window.location.href = "/";
-//         } else {
 
-//             var username = res.user_name;
-//             var points = res.points += 100;
-
-//             console.log(JSON.stringify(username));
-//             console.log(JSON.stringify(coin));
-
-//             $.ajax({
-//                 method: "PUT",
-//                 url: "/api/addCoin",
-//                 data: {
-//                     coin: coin,
-//                     username: username
-//                 }
-//             }).done(console.log("Coin count Updated"));
-//         }
-//     })
-// });
-
+  //Flip questionmarks...
   $("#image").on("click", function() {
-    
- 
+
      $.ajax("/api/open", {
        type: "GET"
      }).then(
@@ -176,11 +161,11 @@ $(function(){
          // Reload the page to get the updated list
        }
      );
-   });//Delete Item Function Close
- 
- 
+   });
 
-        });//Main Function Close
+
+
+});//Main Function Close
 
   //Logic to remove coins. Shold be placed somewhere inside 'open-box' button.
 
@@ -208,5 +193,3 @@ $(function(){
   // });
 
   //TODO: ^^ Add this to 'open-box' button.
-
-
