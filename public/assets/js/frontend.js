@@ -138,6 +138,31 @@ $(function(){
       })
   });
 
+//   $(".images").on("click", function(){
+//     $.post("/", {token: window.localStorage.getItem("token")}).then(function(res){
+//         if(!res) {
+//             window.localStorage.clear();
+//             window.location.href = "/";
+//         } else {
+
+//             var username = res.user_name;
+//             var points = res.points += 100;
+
+//             console.log(JSON.stringify(username));
+//             console.log(JSON.stringify(coin));
+
+//             $.ajax({
+//                 method: "PUT",
+//                 url: "/api/addCoin",
+//                 data: {
+//                     coin: coin,
+//                     username: username
+//                 }
+//             }).done(console.log("Coin count Updated"));
+//         }
+//     })
+// });
+
   $("#image").on("click", function() {
     
  

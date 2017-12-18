@@ -36,19 +36,19 @@ module.exports = function (app) {
 		function packopen() {
 
 			for (var i = 0; i < 3; i++) {
-				var num = Math.random();
+				var num = Math.random(4);
 
 				if (num < 0.1) {
 					tierChoice.push(1);
 				}
 				else if (num < 0.3) {
-					tierChoice.push(2);
-				}
-				else if (num < 0.6) {
 					tierChoice.push(3);
 				}
+				else if (num < 0.6) {
+					tierChoice.push(2);
+				}
 				else {
-					tierChoice.push(4);
+					tierChoice.push(1);
 				}
 			}
 		}
@@ -90,7 +90,7 @@ module.exports = function (app) {
 
 
 	app.put("/api/addCoin", function(req, res){
-
+		console.log(req.body); 
 	    db.User.update({
 			coin_count: req.body.coin
 	    }, {
@@ -98,10 +98,24 @@ module.exports = function (app) {
 				user_name: req.body.username
 			}
 		}).then(function(dbPost) {
-			res.end();
+			res.end(); 
 	    });
 
 	  });
+
+	  app.put("/api/addPoints", function(req, res){
+		console.log(req.body); 
+				db.User.update({
+					points: req.body.points
+				}, {
+					where: {
+						user_name: req.body.username
+					}
+				}).then(function(dbPost) {
+					res.end();
+				});
+		
+			  });
 
 
 	  app.put("/api/removeCoin", function(req, res){

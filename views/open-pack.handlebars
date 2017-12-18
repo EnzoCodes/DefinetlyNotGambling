@@ -5,98 +5,176 @@
     .images2 {
         display: none;
     }
-    .hidden-pack-items {
-        display: none;
-    }
-    .images--effect-boris::after {
-	background: rgba(111,148,182,0.1);
-}
-
-.cbutton--effect-boris.cbutton--click::after {
-	animation: anim-effect-boris 0.3s forwards;
-}
-
-@keyframes anim-effect-boris {
-	0% {
-		transform: scale3d(0.3, 0.3, 1);
-	}
-	25%, 50% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-		transform: scale3d(1.2, 1.2, 1);
-	}
-}
-
 </style>
 
-{{>nav-partial}}
+ {{>nav-partial}}
 
  <div class="container" style="width: 100%"></div>
  <br>
-    <div class="row">
-        <div class="col s6">
-            <div class="left-align">{{>user-partial}}</div>
-        </div><!--col-->
-        <div class="col s6">
-            <div class="right-align">{{>leaderboard-partial}}</div>
-        </div><!--col-->
-    </div><!--row-->
-</div><!--container--> 
- 
+  <div class="row">
+    <div class="col s12">
+      <div class="right-align">{{>leaderboard-partial}}</div>
+    </div>
+  </div><!--row-->
+</div>
+ <br><br><br><br><br><br><br><br><br><br>
     <div class="row valign-wrapper">
-        <div class="col s1"></div>
-        <div class="col s10 center-align">
+        <div class="col s12 center-align">
             <img id="image" class=" center-align" src="assets/img/other/chest.png" height="400px">
-            <span class="images2" id="5"><img width="275px" src="https://i.imgur.com/Jnc9cMV.png"></span>
-            <span class="images2" id="6"><img width="275px" src="https://i.imgur.com/dOXHUw2.png"></span>
-            <span class="images2" id="7"><img width="275px" src="https://i.imgur.com/ccac2hc.png"></span>
-            <span class="images" id="1"><img width="325px" src="assets/img/other/qm.png"></span>
-            <span class="images" id="2"><img width="325px" src="assets/img/other/qm.png"></span>
-            <span class="images" id="3"><img width="325px" src="assets/img/other/qm.png"></span>
+            <span class="images" ><img id="1"height="600px" src="assets/img/other/qm.png"></span>
+            <span class="images" ><img id="2" width="600px" src="assets/img/other/qm.png"></span>
+            <span class="images" ><img id="3"width="600px" src="assets/img/other/qm.png"></span>
         </div><!--col-->
-        <div class="col s1"></div>
     </div><!--row-->
-
-    <div class="row">
-        <div class="col s2 center-align"></div><!--col-->
-        <div class="col s9 center-align">
-            <span class="images2" id="5"><img width="175px" src="https://i.imgur.com/Jnc9cMV.png"></span>
-            
-            
-        
-      
-        </div><!--col-->
-        <div class="col s1 center-align"></div><!--col-->
-    </div><!--row-->
-
 
 <script>
-$(document).ready(function(){
-    $("#image").click(function(){
-        $("p").hide();
-        $(".images").show();
-        $("#image").hide();
+    $(document).ready(function(){
+    
+        $("#image").click(function(){
+            $("p").hide();
+            $(".images").show();
+            $("#image").hide();
+        });
+
+        $("#1").click(function(){
+            var clickSound = new Audio("assets/arena.mp3");
+            clickSound.play();
+            var poop = window.localStorage.getItem("Poop");
+            var tier1  = (JSON.parse(poop).list[0].tier); 
+            var pimage = JSON.parse(poop).list[0].image;
+
+            $("#1").attr("src", pimage); 
+                if (tier1 === 4) {
+                    var point = 50; 
+                    console.log(point);
+                }
+                else if (tier1 === 3) {
+                    var point = 20; 
+                    console.log(point);
+                }
+                else if (tier1 === 2) {
+                    var point = 10; 
+                    console.log(point);
+                }
+                else {
+                    var point = 2; 
+                    console.log(point);
+                }
+
+            $.post("/", {token: window.localStorage.getItem("token")}).then(function(res){
+                if(!res) {
+                    window.localStorage.clear();
+                    window.location.href = "/";
+                } else {
+                    console.log(res); 
+                    var username = res.user_name;
+                    var poi = res.points += point;
+                    console.log(JSON.stringify(username));
+                    console.log(JSON.stringify(poi));
+
+                    $.ajax({
+                        method: "PUT",
+                        url: "/api/addPoints",
+                        data: {
+                            points: poi,
+                            username: username
+                        }
+                    }).done(console.log("Points count Updated"));
+                }
+            })
+        });
+
+        $("#2").click(function(){
+            var poop = window.localStorage.getItem("Poop");
+            var tier1  = (JSON.parse(poop).list[1].tier); 
+            var pimage = JSON.parse(poop).list[1].image;
+
+            $("#2").attr("src", pimage); 
+                if (tier1 === 4) {
+                    var point = 50; 
+                    console.log(point);
+                }
+                else if (tier1 === 3) {
+                    var point = 20; 
+                    console.log(point);
+                }
+                else if (tier1 === 2) {
+                    var point = 10; 
+                    console.log(point);
+                }
+                else {
+                    var point = 2; 
+                    console.log(point);
+                }
+
+            $.post("/", {token: window.localStorage.getItem("token")}).then(function(res){
+                if(!res) {
+                    window.localStorage.clear();
+                    window.location.href = "/";
+                } else {
+                    var username = res.user_name;
+                    var poi = res.points += point;
+                    console.log(JSON.stringify(username));
+                    console.log(JSON.stringify(poi));
+
+                    $.ajax({
+                        method: "PUT",
+                        url: "/api/addPoints",
+                        data: {
+                            points: poi,
+                            username: username
+                        }
+                    }).done(console.log("Points count Updated"));
+                }
+            })
+        });
+
+        $("#3").click(function(){
+            var poop = window.localStorage.getItem("Poop");
+            var tier1  = (JSON.parse(poop).list[2].tier); 
+            var pimage = JSON.parse(poop).list[2].image;
+
+            $("#3").attr("src", pimage); 
+                if (tier1 === 4) {
+                    var point = 50; 
+                    console.log(point);
+                }
+                else if (tier1 === 3) {
+                    var point = 20; 
+                    console.log(point);
+                }
+                else if (tier1 === 2) {
+                    var point = 10; 
+                    console.log(point);
+                }
+                else {
+                    var point = 2; 
+                    console.log(point);
+                }
+
+            $.post("/", {token: window.localStorage.getItem("token")}).then(function(res){
+                if(!res) {
+                    window.localStorage.clear();
+                    window.location.href = "/";
+                } else {
+                    var username = res.user_name;
+                    var poi = res.points += point;
+                    console.log(JSON.stringify(username));
+                    console.log(JSON.stringify(poi));
+
+                    $.ajax({
+                        method: "PUT",
+                        url: "/api/addPoints",
+                        data: {
+                            points: poi,
+                            username: username
+                        }
+                    }).done(console.log("Points count Updated"));
+                }
+            })
+        });
 
     });
+</script>
 
-    });
-    $("#1").click(function(){
-        $("#1").hide();
-        //$(".images2").show();
-               $("#5").show();
-    });
-    $("#2").click(function(){
-         $("#2").hide();
-         $("#6").show();
-    });
-    $("#3").click(function(){
-         $("#3").hide();
-         $("#7").show();
-    });
-      $("#4").click(function(){
-           $("#4").hide();
-         $("#8").show();
-    });
-    </script>
+    

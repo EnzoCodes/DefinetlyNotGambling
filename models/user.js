@@ -15,6 +15,11 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             defaultValue: 100
         },
+        points: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            defaultValue: 100
+        },
         identity: {
             type: DataTypes.STRING,
             defaultValue: "1234512345"
