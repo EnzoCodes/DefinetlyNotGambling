@@ -180,8 +180,8 @@ $(function(){
 // });
 
   $("#image").on("click", function() {
-    
-    var identity = window.localStorage.getItem("token");   
+
+    var identity = window.localStorage.getItem("token");
     console.log(identity);
      $.ajax("/api/open/"+identity, {
        type: "GET"
@@ -194,8 +194,8 @@ $(function(){
        }
      );
    });//Delete Item Function Close
- 
- 
+
+
 
 });//Main Function Close
 
@@ -225,5 +225,3 @@ $(function(){
   // });
 
   //TODO: ^^ Add this to 'open-box' button.
-
-
