@@ -123,26 +123,6 @@ module.exports = function (app) {
 		});
 	});
 
-	app.get("/api/collection/:id",function(req,res){
-
-    console.log(req.params.id);
-        
-        db.User.findAll({
-        // attributes:["id"],
-        	include:[
-            	{
-	            model:db.Item,
-	            require:false
-        //     attributes: ["id"]
-            	}
-        	],
-        	where:{id:req.params.id}
-    		}).then(function(data){
-       		
-       		res.json(data);
-    	});
-
-    });
 
 	app.get("/api/bought",function(req,res){
 		db.user2items.findAll({})

@@ -90,9 +90,25 @@ $(function(){
       });
   });
 
-    $("#admin").on("click", function (){
+  $("#admin").on("click", function (){
         window.location.href = "/admin";
-    });
+  });
+
+  $("#collection").on("click",function(){
+    evnet.preventDefault();
+
+    var identity = window.localStorage.getItem("token");
+
+    $.ajax("/collection"+identity, {
+       type: "GET"
+     }).then(
+       function() {
+         // Reload the page to get the updated list
+         window.location.href = "/collection";
+       }
+     );
+
+  });
 
 //   I believe this is the broken code re: Var id
   $(".delete-item").on("click", function(event) {
