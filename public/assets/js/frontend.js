@@ -60,10 +60,11 @@ $(function(){
         }
       });
 
-      $("#btnLogout").on("click", function(){
-        window.localStorage.clear();
-        window.location.href = "/"; /* NOTE: Perhaps change this to home page */
-      });
+      //Logout button
+  $("#btnLogout").on("click", function(){
+    window.localStorage.clear();
+    window.location.href = "/"; /* NOTE: Perhaps change this to home page */
+  });
 
   $("#createitem2").on("submit", function (event) {
     // Make sure to preventDefault on a submit event.
@@ -112,6 +113,31 @@ $(function(){
     );
   });//Delete Item Function Close
 
+  $("#coinBtn").on("click", function(){
+      $.post("/", {token: window.localStorage.getItem("token")}).then(function(res){
+          if(!res) {
+              window.localStorage.clear();
+              window.location.href = "/";
+          } else {
+              console.log(JSON.stringify(res));
+              var username = res.user_name;
+              var coin = res.coin_count += 100;
+
+              console.log(JSON.stringify(username));
+              console.log(JSON.stringify(coin));
+
+              $.ajax({
+                  method: "PUT",
+                  url: "/api/addCoin",
+                  data: {
+                      coin: coin,
+                      username: username
+                  }
+              }).done(console.log("Coin count Updated"));
+          }
+      })
+  });
+
+
+
 });//Main Function Close
-
-

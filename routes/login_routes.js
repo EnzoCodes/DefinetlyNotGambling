@@ -20,7 +20,7 @@ module.exports = function(app) {
                 var token = randtoken.generate(16);
                 //Update DB with new token on matching USER/PASS
                 db.User.update({
-                    token: token
+                    identity: token
                 }, {
                     where: {
                         user_name: req.body.user_name,
@@ -39,7 +39,7 @@ module.exports = function(app) {
     app.post("/", function(req, res){
         db.User.findOne({
             where: {
-                token: req.body.token
+                identity: req.body.token
             }
         }).then(function(dbRes) {
             res.json(dbRes);

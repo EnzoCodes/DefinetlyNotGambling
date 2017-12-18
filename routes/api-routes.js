@@ -21,13 +21,13 @@ module.exports = function (app) {
 		console.log(req.params.id);
 		db.Item.destroy({
 			where: {
-				id: req.params.id 
+				id: req.params.id
 			}
 		}).then(function () {
-			res.end(); 
-		});//Destroy Function Close 
-	});//Delete Function Close 
-	
+			res.end();
+		});//Destroy Function Close
+	});//Delete Function Close
+
 
 	app.get("/api/open", function (req, res) {
 		var items = [];
@@ -87,5 +87,22 @@ module.exports = function (app) {
 			});
 		});
 	});
+
+
+	app.put("/api/addCoin", function(req, res){
+
+	    db.User.update({
+			coin_count: req.body.coin
+	    }, {
+			where: {
+				user_name: req.body.username
+			}
+		}).then(function(dbPost) {
+			res.end();
+	    });
+
+	  });
+
+
 
 };//Main Function Close
