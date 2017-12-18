@@ -17,9 +17,9 @@ module.exports = function (app) {
     res.render("index");
   });
 
-  app.get("/api/open", function (req, res) {
-    res.render("open-pack");
-  });
+  // app.get("/api/open1", function (req, res) {
+  //   res.render("open-pack");
+  // });
 
   app.get("/loot", function (req, res) {
     res.render("open-pack");

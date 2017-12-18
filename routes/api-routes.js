@@ -28,6 +28,26 @@ module.exports = function (app) {
 		});//Destroy Function Close 
 	});//Delete Function Close 
 	
+	app.get("/api/collection/:id",function(req,res){
+
+	    console.log(req.params.id);
+	    db.User.findAll({
+	        attributes:["id"],
+	        include:[
+	            {
+	            model:db.Item,
+	            require:false
+	        //     attributes: ["id"]
+	            }
+	        ],
+	        where:{id:req.params.id}
+	    }).then(function(data){
+	        res.json(data);
+	    });
+
+    });
+
+
 
 	app.get("/api/open", function (req, res) {
 		var items = [];
@@ -82,10 +102,29 @@ module.exports = function (app) {
 					var newPack = {
 						list: items
 					};
-					res.render("newpack", newPack);
+					// res.render("open-pack", newPack);
+					res.json(newPack);
 				});
 			});
 		});
 	});
+
+
+	app.put("/api/addcoin",function(req,res){
+		
+		console.log("worked!");
+
+		db.User.update({
+			coin_count:200
+		},
+		{ 
+			where: { user_name:"min" 
+			}
+		}).then(function(data){
+		console.log(data);
+		})
+
+	});
+
 
 };//Main Function Close
