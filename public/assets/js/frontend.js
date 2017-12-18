@@ -104,7 +104,7 @@ $(function(){
      }).then(
        function() {
          // Reload the page to get the updated list
-         window.location.href = "/collection";
+         window.location.href = "/collection/";
        }
      );
 
