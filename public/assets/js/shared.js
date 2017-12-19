@@ -94,7 +94,6 @@ $(function(){
         window.location.href = "/admin";
     });
 
-//   I believe this is the broken code re: Var id
   $(".delete-item").on("click", function(event) {
     event.preventDefault();
 
@@ -163,22 +162,26 @@ $(function(){
 //     })
 // });
 
-  $("#image").on("click", function() {
-    
+  
  
-     $.ajax("/api/open", {
-       type: "GET"
-     }).then(
-       function(data) {
-         console.log("this worked", data);
-         window.localStorage.setItem("Poop", JSON.stringify(data))
-         console.log(data.list);
-         // Reload the page to get the updated list
-       }
-     );
-   });//Delete Item Function Close
- 
- 
+   $(".update-item").on("click", function(event) {
+    event.preventDefault();
+
+    var id = $(this).data("id");
+    console.log(id);
+    // Send the DELETE request.
+
+    $.ajax("/admin/" + id, {
+      type: "PUT",
+      data: {}
+    }).then(
+      function() {
+        console.log("deleted id ", id);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });//Delete Item Function Close
 
         });//Main Function Close
 

@@ -1,55 +1,38 @@
 $(function(){
-    
-        $(".point").click(function(){
-            console.log("hi");
 
+    $("#leaderboard").click(function(){
 
-        });
+        $.ajax("/api/leaderboard", {
+            type: "GET"
+        }).then(
+            function(data) {
+                //console.log("this worked", data);
+                window.localStorage.setItem("leader-contents", JSON.stringify(data))
+                //console.log(data.leaders);
+            });
 
-        // $("#1").click(function(){
-        //     var clickSound = new Audio("assets/sounds/arena.mp3");
-        //     clickSound.play();
-        //     var poop = window.localStorage.getItem("Poop");
-        //     var tier1  = (JSON.parse(poop).list[0].tier); 
-        //     var pimage = JSON.parse(poop).list[0].image;
+        var leaderContents = window.localStorage.getItem("leader-contents");
+        
+        for (i = 0; i < 10; i++) {
+            //var points = JSON.parse(leaderContents).leaders[0].points;
+            //var username  = JSON.parse(leaderContents).leaders[0].user_name; 
+            //console.log(JSON.parse(leaderContents).leaders[i].points);
+            //console.log(JSON.parse(leaderContents).leaders[i].user_name);
+            //console.log("Points: " + points);
+            //console.log("Username: " + username);
+            console.log("<li><h5>"+ JSON.parse(leaderContents).leaders[i].user_name + "  " + JSON.parse(leaderContents).leaders[i].points + "</h5></li>"); 
+            $("#slide-out").text("<li><h5>"+ JSON.parse(leaderContents).leaders[i].user_name + "  " + JSON.parse(leaderContents).leaders[i].points + "</h5></li>"); 
+        }
+        
+    });
 
-        //     $("#1").attr("src", pimage); 
-        //         if (tier1 === 4) {
-        //             var point = 50; 
-        //             console.log(point);
-        //         }
-        //         else if (tier1 === 3) {
-        //             var point = 20; 
-        //             console.log(point);
-        //         }
-        //         else if (tier1 === 2) {
-        //             var point = 10; 
-        //             console.log(point);
-        //         }
-        //         else {
-        //             var point = 2; 
-        //             console.log(point);
-        //         }
+    $('.button-collapse').sideNav({
+        menuWidth: 300,
+        closeOnClick: true,
+        edge: 'right', // <--- CHECK THIS OUT
+    });
 
-        //     $.post("/", {token: window.localStorage.getItem("token")}).then(function(res){
-        //         if(!res) {
-        //             window.localStorage.clear();
-        //             window.location.href = "/";
-        //         } else {
-        //             console.log(res); 
-        //             var username = res.user_name;
-        //             var poi = res.points += point;
-        //             console.log(JSON.stringify(username));
-        //             console.log(JSON.stringify(poi));
+    $('.collapsible').collapsible();
 
-        //             $.ajax({
-        //                 method: "PUT",
-        //                 url: "/api/addPoints",
-        //                 data: {
-        //                     points: poi,
-        //                     username: username
-        //                 }
-        //             }).done(console.log("Points count Updated"));
-        //         }
-        //     })
-        });
+});//main-function-close
+       
