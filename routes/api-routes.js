@@ -131,8 +131,8 @@ module.exports = function (app) {
 		});
 	});
 
-	app.put("/api/addCoin", function(req, res){
-		console.log(req.body); 
+	app.put("/api/updateCoin", function(req, res){
+		console.log(req.body);
 	    db.User.update({
 			coin_count: req.body.coin
 	    }, {
@@ -144,6 +144,7 @@ module.exports = function (app) {
 	    });
 
 	  });
+
 
 	  app.put("/api/addPoints", function(req, res){
 		console.log(req.body);
@@ -157,22 +158,7 @@ module.exports = function (app) {
 					res.end();
 				});
 
-			  });
-
-
-	  app.put("/api/removeCoin", function(req, res){
-
-		  db.User.update({
-			  coin_count: req.body.coin
-		  }, {
-			  where: {
-				  user_name: req.body.username
-			  }
-		  }).then(function(dbPost) {
-			  res.end();
-		  });
-
-		});
+			});
 
 
 
