@@ -29,7 +29,7 @@ require("./routes/login_routes.js")(app);
 
 app.use(logger('dev'));
 
-db.sequelize.sync({}).then(function() {
+db.sequelize.sync().then(function() {
     app.listen(PORT, function() {
       console.log("App listening on PORT " + PORT);
     });
