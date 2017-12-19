@@ -7,7 +7,7 @@ $(function(){
         var identity = window.localStorage.getItem("token");
         console.log(identity);
 
-        $.ajax("/api/open/:identity", {
+        $.ajax("/api/open/"+identity, {
           type: "GET"
         }).then(function(data) {
             console.log("this worked", data);

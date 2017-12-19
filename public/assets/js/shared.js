@@ -26,16 +26,21 @@ $(function(){
   });
 
   $("#collection").on("click",function(){
-    evnet.preventDefault();
+    event.preventDefault();
 
-    var identity = window.localStorage.getItem("token");
+    // var identity = window.localStorage.getItem("token");
 
-    $.ajax("/collection"+identity, {
+    document.cookie = "identity="+window.localStorage.getItem("token");
+
+    var x = document.cookie;
+    console.log("this is cookie!!!!"+x);
+
+    $.ajax("/collection", {
        type: "GET"
      }).then(
        function() {
          // Reload the page to get the updated list
-         window.location.href = "/collection/";
+         window.location.href = "/collection";
        }
      );
 
