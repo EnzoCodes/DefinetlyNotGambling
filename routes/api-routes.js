@@ -55,7 +55,7 @@ module.exports = function (app) {
 
 		var identity = req.params.identity;
 
-		console.log("this is ident"+identity);
+		console.log(identity);
 
 		var id;
 
@@ -125,27 +125,14 @@ module.exports = function (app) {
 
 
 	app.get("/api/bought",function(req,res){
-		// db.user2items.findAll({})
-
-		db.User.findAll({
-
-      		include:[
-        		{
-         		model:db.Item,
-         		require:false
-        		}
-      		],
-      		where:{
-       		id:1
-      		}
-      		}).then(function(data){
+		db.user2items.findAll({})
+		.then(function(data){
 			res.json(data);
 		});
 	});
 
-	app.put("/api/updateCoin", function(req, res){
-		console.log(req.body);
-
+	app.put("/api/addCoin", function(req, res){
+		console.log(req.body); 
 	    db.User.update({
 			coin_count: req.body.coin
 	    }, {
@@ -153,7 +140,7 @@ module.exports = function (app) {
 				user_name: req.body.username
 			}
 		}).then(function(dbPost) {
-			res.end(); 
+			res.end();
 	    });
 
 	  });
