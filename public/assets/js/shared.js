@@ -99,12 +99,10 @@ $(function(){
 
     // var identity = window.localStorage.getItem("token");
 
-    document.cookie = window.localStorage.getItem("token");
+    document.cookie = "identity="+window.localStorage.getItem("token");
 
     var x = document.cookie;
-    var y = document.cookie;
     console.log("this is cookie!!!!"+x);
-    console.log("this is cookie!!!!"+y);
 
     $.ajax("/collection", {
        type: "GET"

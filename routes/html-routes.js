@@ -27,7 +27,7 @@ module.exports = function (app) {
     
 
     //need to figure out this @#O)OEFH)@ cookie
-    console.log(req.cookies);
+    console.log("this is backend cookie"+req.cookies.identity);
 
     console.log("this worked");
 
@@ -35,8 +35,7 @@ module.exports = function (app) {
 
     db.User.findOne({
       where:{
-        // identity: req.cookies
-        id:1
+        identity: req.cookies.identity
         }
       }).then(function(data){
         // id = data;
