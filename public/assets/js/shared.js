@@ -95,16 +95,23 @@ $(function(){
   });
 
   $("#collection").on("click",function(){
-    evnet.preventDefault();
+    event.preventDefault();
 
-    var identity = window.localStorage.getItem("token");
+    // var identity = window.localStorage.getItem("token");
 
-    $.ajax("/collection"+identity, {
+    document.cookie = window.localStorage.getItem("token");
+
+    var x = document.cookie;
+    var y = document.cookie;
+    console.log("this is cookie!!!!"+x);
+    console.log("this is cookie!!!!"+y);
+
+    $.ajax("/collection", {
        type: "GET"
      }).then(
        function() {
          // Reload the page to get the updated list
-         window.location.href = "/collection/";
+         window.location.href = "/collection";
        }
      );
 

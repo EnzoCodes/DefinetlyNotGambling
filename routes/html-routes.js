@@ -1,4 +1,5 @@
 var db = require("../models");
+var cookieParser = require("cookie-parser");
 
 module.exports = function (app) {
   app.get("/", function (req, res) {
@@ -22,48 +23,55 @@ module.exports = function (app) {
   });
 
   //NEED TO EDIT CODE TO REFLECT A USER SEPCIFIC COLLECTION ONCE WE DO THAT LOGIC//
-  app.get("/collection/:id", function (req, res) {
+  app.get("/collection", function (req, res) {
     
-    
-    var identity = req.params.identity;
 
-    console.log(identity);
+    //need to figure out this @#O)OEFH)@ cookie
+    console.log(req.cookies);
 
-    var id; 
+    console.log("this worked");
+
+    var id;
 
     db.User.findOne({
       where:{
-        identity:req.params.identity
-        // id:3
+        // identity: req.cookies
+        id:1
         }
       }).then(function(data){
         // id = data;
-        // console.log("data id: "+data.id);
+        console.log("data id: "+data.id);
         id = data.id;
+        console.log("this is ID: "+id);
+
+        db.User.findAll({
+
+          include:[
+            {
+              model:db.Item,
+              require:false
+            }
+          ],
+            where:{
+              id:id
+            }
+
+          }).then(function (data) {
+            console.log("this is Item"+data[0].Items);
+            var hbsObject = {
+              // kitty: data.Item
+              kitty: data[0].Items
+            }; 
+            res.render("collection", hbsObject);
+          });
+
     });
 
+    
 
-    db.User.findAll({
-
-      include:[
-        {
-          model:db.Item,
-          require:false
-        }
-      ],
-      where:{
-        id:id
-      }
-
-    }).then(function (data) {
-      var hbsObject = {
-        // kitty: data.Item
-        kitty: data.Items
-      }; 
-      // res.render("collection", hbsObject);
-      res.json(hbsObject);
-    });
   });
+
+
 
 
     // app.get("/api/collection/:id",function(req,res){

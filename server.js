@@ -4,15 +4,18 @@ var login = require("./routes/login_routes");
 var db = require("./models");
 var logger = require("morgan");
 var randtoken = require("rand-token");
+var cookieParser = require("cookie-parser");
 
 var PORT = process.env.PORT || 8080;
 var app = express();
 
 app.use(logger('dev'));
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+
 
 var exphbs = require("express-handlebars");
 
