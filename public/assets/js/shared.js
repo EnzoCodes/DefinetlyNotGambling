@@ -65,7 +65,7 @@ $(function(){
     );
   });//Delete Item Function Close
 
-   $(".update-item").on("click", function(event) {
+  $(".update-item").on("click", function(event) {
     event.preventDefault();
 
     var id = $(this).data("id");
@@ -82,7 +82,7 @@ $(function(){
         location.reload();
       }
     );
-    });//Update item close
+  });//Update item close
 
 
 
