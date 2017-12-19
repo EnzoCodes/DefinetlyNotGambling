@@ -7,14 +7,17 @@
 }
 
 .images {
-  animation: newElement 250ms ease-in-out 1
+  animation: 250ms ease-in-out 1
 
-@keyframes newElement
-  from
-    opacity: 0
-  to
-    opacity: 1
 }
 
--webkit-transition:3s;
-transform: rotateY(360deg);
+#btnLogin, #btnLogout, #btnSignUp, #admin {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 0.5rem;
+}
+
+#logbox {
+    background: #f5f5dc;
+    border: 2px solid #eed5b7;
+}
