@@ -10,7 +10,7 @@ var app = express();
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
@@ -26,7 +26,7 @@ require("./routes/login_routes.js")(app);
 
 app.use(logger('dev'));
 
-db.sequelize.sync({}).then(function() {
+db.sequelize.sync({ force: true }).then(function() {
     app.listen(PORT, function() {
       console.log("App listening on PORT " + PORT);
     });

@@ -30,10 +30,11 @@
             <span class="images" ><img id="3"width="400px" src="assets/img/other/qm.png"></span>
         </div><!--col-->
     </div><!--row-->
-
+<script src="/assets/js/open-pack.js"></script>
+<!-- Paste below into open-pack.js when done... -->
 <script>
     $(document).ready(function(){
-    
+
         $("#image").click(function(){
             $("p").hide();
             $(".images").show();
@@ -44,24 +45,24 @@
             var clickSound = new Audio("assets/sounds/arena.mp3");
             clickSound.play();
             var poop = window.localStorage.getItem("Poop");
-            var tier1  = (JSON.parse(poop).list[0].tier); 
+            var tier1  = (JSON.parse(poop).list[0].tier);
             var pimage = JSON.parse(poop).list[0].image;
 
-            $("#1").attr("src", pimage); 
+            $("#1").attr("src", pimage);
                 if (tier1 === 4) {
-                    var point = 50; 
+                    var point = 50;
                     console.log(point);
                 }
                 else if (tier1 === 3) {
-                    var point = 20; 
+                    var point = 20;
                     console.log(point);
                 }
                 else if (tier1 === 2) {
-                    var point = 10; 
+                    var point = 10;
                     console.log(point);
                 }
                 else {
-                    var point = 2; 
+                    var point = 2;
                     console.log(point);
                 }
 
@@ -70,7 +71,7 @@
                     window.localStorage.clear();
                     window.location.href = "/";
                 } else {
-                    console.log(res); 
+                    console.log(res);
                     var username = res.user_name;
                     var poi = res.points += point;
                     console.log(JSON.stringify(username));
@@ -92,24 +93,24 @@
             var clickSound = new Audio("assets/sounds/arena.mp3");
             clickSound.play();
             var poop = window.localStorage.getItem("Poop");
-            var tier1  = (JSON.parse(poop).list[1].tier); 
+            var tier1  = (JSON.parse(poop).list[1].tier);
             var pimage = JSON.parse(poop).list[1].image;
 
-            $("#2").attr("src", pimage); 
+            $("#2").attr("src", pimage);
                 if (tier1 === 4) {
-                    var point = 50; 
+                    var point = 50;
                     console.log(point);
                 }
                 else if (tier1 === 3) {
-                    var point = 20; 
+                    var point = 20;
                     console.log(point);
                 }
                 else if (tier1 === 2) {
-                    var point = 10; 
+                    var point = 10;
                     console.log(point);
                 }
                 else {
-                    var point = 2; 
+                    var point = 2;
                     console.log(point);
                 }
 
@@ -141,24 +142,24 @@
             var clickSound = new Audio("assets/sounds/arena.mp3");
             clickSound.play();
             var poop = window.localStorage.getItem("Poop");
-            var tier1  = (JSON.parse(poop).list[2].tier); 
+            var tier1  = (JSON.parse(poop).list[2].tier);
             var pimage = JSON.parse(poop).list[2].image;
 
-            $("#3").attr("src", pimage); 
+            $("#3").attr("src", pimage);
                 if (tier1 === 4) {
-                    var point = 50; 
+                    var point = 50;
                     console.log(point);
                 }
                 else if (tier1 === 3) {
-                    var point = 20; 
+                    var point = 20;
                     console.log(point);
                 }
                 else if (tier1 === 2) {
-                    var point = 10; 
+                    var point = 10;
                     console.log(point);
                 }
                 else {
-                    var point = 2; 
+                    var point = 2;
                     console.log(point);
                 }
 
@@ -186,5 +187,3 @@
 
     });
 </script>
-
-    

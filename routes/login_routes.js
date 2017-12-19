@@ -18,6 +18,7 @@ module.exports = function(app) {
                 res.json(dbRes);
             } else {
                 var token = randtoken.generate(16);
+                console.log("token"+token);
                 //Update DB with new token on matching USER/PASS
                 db.User.update({
                     identity: token
@@ -27,8 +28,9 @@ module.exports = function(app) {
                         password: req.body.password
                     }
                 }).then(function(dbRes) {
+                    console.log("respond! ", dbRes);
                     //Return logged in user data...unfortunately including password.
-                    res.json(dbRes);
+                    res.json(token);
                 })
             }
         })
@@ -54,7 +56,8 @@ module.exports = function(app) {
             user_name: req.body.user_name,
             password: req.body.password,
             coin_count: 100,
-            identity: token
+            identity: token,
+            points: 0
         }).then(function(dbRes){
             res.json(dbRes);
         })
