@@ -9,12 +9,8 @@ module.exports = function (app) {
     res.render("login-page");
   });
 
-  // app.get("/admin", function (req, res) {
-  //   res.render("admin-cats");
-  // });
-
   app.get("/home", function (req, res) {
-    res.render("index");
+    res.render("open-pack");
   });
 
   app.get("/api/open", function (req, res) {
@@ -95,18 +91,26 @@ module.exports = function (app) {
 
     app.get("/login-page", function(req, res){
         res.render("login-page");
-    })
+    });
     
     app.get("/admin", function (req, res) {
-    db.Item.findAll({}).then(function (data) {
-      var hbsObject = {
-        kitty: data
-      }; 
-      res.render("admin-cats", hbsObject);
+      db.Item.findAll({}).then(function (data) {
+        var hbsObject = {
+          kitty: data
+        }; 
+        res.render("admin-cats", hbsObject);
+      });
     });
-  });
 
-
+    app.get("/api/leaderboard", function (req, res) {
+      db.User.findAll({}).then(function (data) {
+        var hbsObject = {
+          leaders: data
+        }; 
+        res.json(hbsObject);
+      });
+    });
+  };
 
   //NEED TO WORK OUT COIN COUNT CODE//
   // app.get("/*", function (req, res) {
@@ -118,4 +122,3 @@ module.exports = function (app) {
   //   });
   // });
 
-};

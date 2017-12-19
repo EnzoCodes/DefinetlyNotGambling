@@ -1,189 +1,29 @@
- <style>
+<style>
     .images {
         display: none;
     }
-    .images2 {
-        display: none;
-    }
-    #1:hover {
-    -webkit-transition:3s;
-    transform: rotateY(360deg);
-    }
 </style>
 
- {{>nav-partial}}
+{{>nav-partial}}
 
- <div class="container" style="width: 100%"></div>
- <br>
-  <div class="row">
+<div class="container" style="width: 100%">
+
+<br>
+
+<div class="row">
     <div id="leader" class="col s12 point">
-      <div class="right-align">{{>leaderboard-partial}}</div>
-    </div>
+        <div class="right-align">{{>leaderboard-partial}}</div>
+    </div><!--col-->
   </div><!--row-->
 </div>
- <br><br><br><br><br>
+
+ <br><br><br>
     <div class="row valign-wrapper" >
         <div class="col s12 center-align">
             <img id="image" class=" center-align" src="assets/img/other/chest.png" height="400px">
-            <span class="images" ><img id="1"height="400px" src="assets/img/other/qm.png"></span>
-            <span class="images" ><img id="2" width="400px" src="assets/img/other/qm.png"></span>
-            <span class="images" ><img id="3"width="400px" src="assets/img/other/qm.png"></span>
+            <span class="images" ><img id="1"width="350px" src="assets/img/other/question.png"></span>
+            <span class="images" ><img id="2" width="350px" src="assets/img/other/question.png"></span>
+            <span class="images" ><img id="3"width="350px" src="assets/img/other/question.png"></span>
         </div><!--col-->
     </div><!--row-->
-<script src="/assets/js/open-pack.js"></script>
-<!-- Paste below into open-pack.js when done... -->
-<script>
-    $(document).ready(function(){
-
-        $("#image").click(function(){
-            $("p").hide();
-            $(".images").show();
-            $("#image").hide();
-        });
-
-        $("#1").click(function(){
-            var clickSound = new Audio("assets/sounds/arena.mp3");
-            clickSound.play();
-            var poop = window.localStorage.getItem("Poop");
-            var tier1  = (JSON.parse(poop).list[0].tier);
-            var pimage = JSON.parse(poop).list[0].image;
-
-            $("#1").attr("src", pimage);
-                if (tier1 === 4) {
-                    var point = 50;
-                    console.log(point);
-                }
-                else if (tier1 === 3) {
-                    var point = 20;
-                    console.log(point);
-                }
-                else if (tier1 === 2) {
-                    var point = 10;
-                    console.log(point);
-                }
-                else {
-                    var point = 2;
-                    console.log(point);
-                }
-
-            $.post("/", {token: window.localStorage.getItem("token")}).then(function(res){
-                if(!res) {
-                    window.localStorage.clear();
-                    window.location.href = "/";
-                } else {
-                    console.log(res);
-                    var username = res.user_name;
-                    var poi = res.points += point;
-                    console.log(JSON.stringify(username));
-                    console.log(JSON.stringify(poi));
-
-                    $.ajax({
-                        method: "PUT",
-                        url: "/api/addPoints",
-                        data: {
-                            points: poi,
-                            username: username
-                        }
-                    }).done(console.log("Points count Updated"));
-                }
-            })
-        });
-
-        $("#2").click(function(){
-            var clickSound = new Audio("assets/sounds/arena.mp3");
-            clickSound.play();
-            var poop = window.localStorage.getItem("Poop");
-            var tier1  = (JSON.parse(poop).list[1].tier);
-            var pimage = JSON.parse(poop).list[1].image;
-
-            $("#2").attr("src", pimage);
-                if (tier1 === 4) {
-                    var point = 50;
-                    console.log(point);
-                }
-                else if (tier1 === 3) {
-                    var point = 20;
-                    console.log(point);
-                }
-                else if (tier1 === 2) {
-                    var point = 10;
-                    console.log(point);
-                }
-                else {
-                    var point = 2;
-                    console.log(point);
-                }
-
-            $.post("/", {token: window.localStorage.getItem("token")}).then(function(res){
-                if(!res) {
-                    window.localStorage.clear();
-                    window.location.href = "/";
-                } else {
-                    var username = res.user_name;
-                    var poi = res.points += point;
-                    console.log(JSON.stringify(username));
-                    console.log(JSON.stringify(poi));
-
-                    //$("#point-button").html(); 
-
-                    $.ajax({
-                        method: "PUT",
-                        url: "/api/addPoints",
-                        data: {
-                            points: poi,
-                            username: username
-                        }
-                    }).done(console.log("Points count Updated"));
-                }
-            })
-        });
-
-        $("#3").click(function(){
-            var clickSound = new Audio("assets/sounds/arena.mp3");
-            clickSound.play();
-            var poop = window.localStorage.getItem("Poop");
-            var tier1  = (JSON.parse(poop).list[2].tier);
-            var pimage = JSON.parse(poop).list[2].image;
-
-            $("#3").attr("src", pimage);
-                if (tier1 === 4) {
-                    var point = 50;
-                    console.log(point);
-                }
-                else if (tier1 === 3) {
-                    var point = 20;
-                    console.log(point);
-                }
-                else if (tier1 === 2) {
-                    var point = 10;
-                    console.log(point);
-                }
-                else {
-                    var point = 2;
-                    console.log(point);
-                }
-
-            $.post("/", {token: window.localStorage.getItem("token")}).then(function(res){
-                if(!res) {
-                    window.localStorage.clear();
-                    window.location.href = "/";
-                } else {
-                    var username = res.user_name;
-                    var poi = res.points += point;
-                    console.log(JSON.stringify(username));
-                    console.log(JSON.stringify(poi));
-
-                    $.ajax({
-                        method: "PUT",
-                        url: "/api/addPoints",
-                        data: {
-                            points: poi,
-                            username: username
-                        }
-                    }).done(console.log("Points count Updated"));
-                }
-            })
-        });
-
-    });
-</script>
+</div>
