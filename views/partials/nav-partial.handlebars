@@ -1,19 +1,19 @@
 
-<!--We need to decide if we want to make an add coins buttion/partial/form to simulate buying coins, otherwise the nav bar is done -->
-
   <div class="navbar-fixed">
     <nav>
-      <div class="nav-wrapper">
-        <a style="padding-left: 40px; font-weight: bold;" class=" 1 brand-logo">LOOT BOX</a>
+      <div class="lime accent-3 nav-wrapper">
+        <a style="padding-left: 40px; font-weight: bold;" class="amber-text center brand-logo">LOOT BOX</a>
           <ul class="right hide-on-med-and-down">
             <li><a href="" id="collection" class=" white teal-text waves-effect waves-light btn">{{>user-partial}}</a></li>
             <li><a href="/loot" class="waves-effect waves-light btn">Purchase Loot Box</a></li>
             <li><a href="#" id="coinBtn" class="waves-effect white teal-text btn-flat waves-light btn">Buy Coins</a></li>
-            <li><a href="#" id="coinDisplay" class="waves-effect white teal-text btn-flat waves-light btn"> <p id="coinCountFill"></p></a></li>
-            <li><a href="#" id="btnLogout" class="white teal-text btn-flat waves-light btn">Log Out</a></li>
+            <li><a href="#" id="coinDisplay" class="amber white-text waves-effect btn-flat waves-light btn"> <p id="coinCountFill"></p></a></li>
+            <li><a href="#" id="btnLogout" class="red lighten-1 white-text btn-flat waves-light btn">Log Out</a></li>
           </ul>
-      </div><!--NavWrapperClose-->
+          <ul class="left hide-on-med-and-down">
+            <li><a href="" id="collection" class="white-text waves-effect waves-light btn">{{>user-partial}}</a></li>
+            <li><a href="/loot" class="amber white-text waves-effect waves-light btn">Purchase Loot Box</a></li>
+          </ul>
     </nav>
 </div><!--NavBarDivClose-->
-
 <script src="/assets/js/nav.js"></script>
