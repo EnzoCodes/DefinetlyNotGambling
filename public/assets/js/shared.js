@@ -178,22 +178,6 @@ $(function(){
 //     })
 // });
 
-  $("#image").on("click", function() {
-
-    var identity = window.localStorage.getItem("token");
-    console.log(identity);
-     $.ajax("/api/open/"+identity, {
-       type: "GET"
-     }).then(
-       function(data) {
-         console.log("this worked", data);
-         window.localStorage.setItem("Poop", JSON.stringify(data))
-         console.log(data.list);
-         // Reload the page to get the updated list
-       }
-     );
-   });//Delete Item Function Close
-
 
    $(".update-item").on("click", function(event) {
     event.preventDefault();

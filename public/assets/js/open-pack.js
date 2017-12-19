@@ -4,7 +4,10 @@ $(function(){
         $(".images").show();
         $("#image").hide();
 
-        $.ajax("/api/open", {
+        var identity = window.localStorage.getItem("token");
+        console.log(identity);
+
+        $.ajax("/api/open/:identity", {
           type: "GET"
         }).then(
           function(data) {
@@ -17,7 +20,10 @@ $(function(){
 
     $("#1").click(function(){
         var clickSound = new Audio("assets/sounds/arena.mp3");
+        console.log(clickSound.volume); 
+        clickSound.volume = 0.1;
         clickSound.play();
+        console.log(clickSound.volume); 
 
         var boxContents = window.localStorage.getItem("box-contents");
         var tier  = (JSON.parse(boxContents).list[0].tier);
@@ -68,7 +74,10 @@ $(function(){
 
     $("#2").click(function(){
         var clickSound = new Audio("assets/sounds/arena.mp3");
+        console.log(clickSound.volume); 
+        clickSound.volume = 0.1;
         clickSound.play();
+        console.log(clickSound.volume); 
 
         var boxContents = window.localStorage.getItem("box-contents");
         var tier  = (JSON.parse(boxContents).list[1].tier);
@@ -118,7 +127,10 @@ $(function(){
 
         $("#3").click(function(){
             var clickSound = new Audio("assets/sounds/arena.mp3");
+            console.log(clickSound.volume); 
+            clickSound.volume = 0.1;
             clickSound.play();
+            console.log(clickSound.volume); 
 
             var boxContents = window.localStorage.getItem("box-contents");
             var tier  = (JSON.parse(boxContents).list[2].tier);
