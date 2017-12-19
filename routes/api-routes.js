@@ -57,7 +57,7 @@ module.exports = function (app) {
 
 		console.log(identity);
 
-		var id; 
+		var id;
 
 		db.User.findOne({
 			where:{
@@ -131,8 +131,8 @@ module.exports = function (app) {
 		});
 	});
 
-	app.put("/api/addCoin", function(req, res){
-		console.log(req.body); 
+	app.put("/api/updateCoin", function(req, res){
+		console.log(req.body);
 	    db.User.update({
 			coin_count: req.body.coin
 	    }, {
@@ -146,7 +146,7 @@ module.exports = function (app) {
 	  });
 
 	  app.put("/api/addPoints", function(req, res){
-		console.log(req.body); 
+		console.log(req.body);
 				db.User.update({
 					points: req.body.points
 				}, {
@@ -156,7 +156,7 @@ module.exports = function (app) {
 				}).then(function(dbPost) {
 					res.end();
 				});
-		
+
 			  });
 
 

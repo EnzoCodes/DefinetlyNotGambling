@@ -3,7 +3,6 @@ $(function(){
     //Initial sign in check...
     // This is happening in nav.js because the nav bar loads on every page
     // except the loggin page. So we can do this with the partial.
-    console.log(localStorage.getItem("token"));
 
     $.post("/", {token: window.localStorage.getItem("token")}).then(function(res){
         console.log("what is here?", res);
@@ -13,8 +12,7 @@ $(function(){
         } else {
             console.log("User authenticated: " + res.user_name);
             $("#coinCountFill").html("<p> Coins: "+ res.coin_count +"</p>");
-
-
+            $("#userNameDisplay").html("<p>"+res.user_name+"<p>");
         }
     });
 
@@ -35,7 +33,7 @@ $(function(){
 
                 $.ajax({
                     method: "PUT",
-                    url: "/api/addCoin",
+                    url: "/api/updateCoin",
                     data: {
                         coin: coin,
                         username: username
@@ -43,6 +41,12 @@ $(function(){
                 }).done(console.log("Coin count Updated"));
             }
         })
+    });
+
+    //Logout button
+    $("#btnLogout").on("click", function(){
+      window.localStorage.clear();
+      window.location.href = "/"; /* NOTE: Perhaps change this to home page */
     });
 
 

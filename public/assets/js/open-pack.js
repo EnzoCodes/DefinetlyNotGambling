@@ -9,21 +9,42 @@ $(function(){
 
         $.ajax("/api/open/:identity", {
           type: "GET"
-        }).then(
-          function(data) {
+        }).then(function(data) {
             console.log("this worked", data);
-            window.localStorage.setItem("box-contents", JSON.stringify(data))
-            console.log(data.list);
-          }
-        );
+            window.localStorage.setItem("box-contents", JSON.stringify(data));
+
+            //Subtracting coins...
+            $.post("/", {token: window.localStorage.getItem("token")}).then(function(res){
+                console.log("Post to add coins was made");
+                if(!res) {
+                    window.localStorage.clear();
+                    window.location.href = "/";
+                } else {
+
+                    var username = res.user_name;
+                    var coin = res.coin_count -= 50;
+
+                    $("#coinCountFill").html("<p> Coins: "+ coin +"</p>");
+
+                    $.ajax({
+                        method: "PUT",
+                        url: "/api/updateCoin",
+                        data: {
+                            coin: coin,
+                            username: username
+                        }
+                    }).done(console.log("Coin count Updated"));
+                }
+            })
+          });
     });
 
     $("#1").click(function(){
         var clickSound = new Audio("assets/sounds/arena.mp3");
-        console.log(clickSound.volume); 
+        console.log(clickSound.volume);
         clickSound.volume = 0.1;
         clickSound.play();
-        console.log(clickSound.volume); 
+        console.log(clickSound.volume);
 
         var boxContents = window.localStorage.getItem("box-contents");
         var tier  = (JSON.parse(boxContents).list[0].tier);
@@ -74,10 +95,10 @@ $(function(){
 
     $("#2").click(function(){
         var clickSound = new Audio("assets/sounds/arena.mp3");
-        console.log(clickSound.volume); 
+        console.log(clickSound.volume);
         clickSound.volume = 0.1;
         clickSound.play();
-        console.log(clickSound.volume); 
+        console.log(clickSound.volume);
 
         var boxContents = window.localStorage.getItem("box-contents");
         var tier  = (JSON.parse(boxContents).list[1].tier);
@@ -127,10 +148,10 @@ $(function(){
 
         $("#3").click(function(){
             var clickSound = new Audio("assets/sounds/arena.mp3");
-            console.log(clickSound.volume); 
+            console.log(clickSound.volume);
             clickSound.volume = 0.1;
             clickSound.play();
-            console.log(clickSound.volume); 
+            console.log(clickSound.volume);
 
             var boxContents = window.localStorage.getItem("box-contents");
             var tier  = (JSON.parse(boxContents).list[2].tier);

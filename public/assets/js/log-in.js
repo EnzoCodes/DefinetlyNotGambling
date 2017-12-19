@@ -11,7 +11,27 @@ $(function(){
 
     //Links to Admin page.
     $("#admin").on("click", function (){
-        window.location.href = "/admin";
+        event.preventDefault();
+        //Grab user...
+        var user = {
+            user_name: "ADMIN",
+            password: "MinErinEnzo"
+        };
+        //Deny if no info entered...
+        if (user.user_name != "ADMIN" || user.password != "MinErinEnzo") {
+            alert("YOU AREN'T AN ADMIN!");
+        } else {
+            // Begin login validation...
+            $.post("/logAttempt", user).then(function(res){
+                if (res === null) {
+                    $("#badCred").removeClass("hide");
+                } else {
+                    window.localStorage.setItem("token", res);
+                    console.log(localStorage.getItem("token"));
+                    window.location.href = "/admin";
+                }
+            })
+        }
     });
 
     // Passes token to DB to check if local storage token matches DB token.

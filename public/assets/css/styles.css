@@ -1,3 +1,17 @@
 #coinCountFill{
     margin-top: -1em !important;
 }
+
+#userNameDisplay{
+    margin-top: -5px !important;
+}
+
+.images {
+  animation: newElement 250ms ease-in-out 1
+
+@keyframes newElement
+  from
+    opacity: 0
+  to
+    opacity: 1
+}
