@@ -1,8 +1,9 @@
 $(function(){
 
-    $("#leaderboard").click(function(){
+    $("#leaderboard").click(async function(){
 
-        $.ajax("/api/leaderboard", {
+      $("#slide-out").empty();
+        await $.ajax("/api/leaderboard", {
             type: "GET"
         }).then(
             function(data) {
@@ -12,18 +13,18 @@ $(function(){
             });
 
         var leaderContents = window.localStorage.getItem("leader-contents");
-        
+
         for (i = 0; i < 10; i++) {
-            //var points = JSON.parse(leaderContents).leaders[0].points;
-            //var username  = JSON.parse(leaderContents).leaders[0].user_name; 
-            //console.log(JSON.parse(leaderContents).leaders[i].points);
-            //console.log(JSON.parse(leaderContents).leaders[i].user_name);
-            //console.log("Points: " + points);
-            //console.log("Username: " + username);
-            console.log("<li><h5>"+ JSON.parse(leaderContents).leaders[i].user_name + "  " + JSON.parse(leaderContents).leaders[i].points + "</h5></li>"); 
-            $("#slide-out").text("<li><h5>"+ JSON.parse(leaderContents).leaders[i].user_name + "  " + JSON.parse(leaderContents).leaders[i].points + "</h5></li>"); 
+            var points = JSON.parse(leaderContents).leaders[0].points;
+            var username  = JSON.parse(leaderContents).leaders[0].user_name;
+            console.log(JSON.parse(leaderContents).leaders[i].points);
+            console.log(JSON.parse(leaderContents).leaders[i].user_name);
+            console.log("Points: " + points);
+            console.log("Username: " + username);
+            //console.log("<li><h5>"+ JSON.parse(leaderContents).leaders[i].user_name + "  " + JSON.parse(leaderContents).leaders[i].points + "</h5></li>");
+            $("#slide-out").append("<li><h5>"+ JSON.parse(leaderContents).leaders[i].user_name + "  " + JSON.parse(leaderContents).leaders[i].points + "</h5></li>");
         }
-        
+
     });
 
     $('.button-collapse').sideNav({
@@ -35,4 +36,3 @@ $(function(){
     $('.collapsible').collapsible();
 
 });//main-function-close
-       

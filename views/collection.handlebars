@@ -1,7 +1,24 @@
 
  {{>nav-partial}}
+<style>
 
- <div class="container" style="width: 100%"></div>
+body {
+  background-color: #254558
+}
+.valign-wrapper{
+   background-color: #f4f5f6;
+   padding: 10px;
+   color: #2b2b3a;
+   text-shadow: 1px 1px 2px #eafc40;
+   width: 1200px;
+}
+#shadow {
+  text-shadow: 1px 1px 2px #f4f5f6;
+}
+
+</style>
+
+ <div class="container" style="width: 100%;">
  <br>
   <div class="row">
     <div class="col s12">
@@ -9,26 +26,231 @@
     </div>
   </div><!--row-->
  </div><!--container-->
-{{!-- <style>
-    .images {
-        display: none;
-    }
-    .images2 {
-        display: none;
-    }
-    .hidden-pack-items {
-        display: none;
-    }
-</style> --}}
 
-<div class="class container">
+  {{#if kitty.stark}}
+    <div class="container valign-wrapper">
+      <div class="row"><!--STARK DIV-->
+        <div class="col s12">
+          <h3 style="padding-left: 20px" class="">HOUSE STARK<img class="float-right" style="padding-left: 20px" height="75px" src="assets/img/got/stark.png"></h3>
+        </div><!--col-->
 
-    <div class="class ball row">
-            {{#each kitty}}
-                <div class="col s2 ball">
-                    <img width="150px" src="{{this.image}}">
-                </div>
-            {{/each}}
-        <div class="class s2"></div>
-    </div>
-</div>
+        {{#each kitty.stark}}
+            <div class="col s2">
+              <img width="200px" src="{{this.image}}">
+              <h6 id="shadow" class="center-align">{{this.name}}</h6>
+            </div><!--col-->
+        {{/each}}
+      </div><!--row-->
+    </div><!--wrapper-->
+  {{/if}}
+
+  <br><br>
+
+  {{#if kitty.lannister}}
+    <div class="container valign-wrapper">
+      <div class="row"><!--STARK DIV-->
+        <div class="col s12">
+          <h3 style="padding-left: 20px" class="">HOUSE LANNISTER<img class="float-right" style="padding-left: 20px" height="75px" src="assets/img/got/lannister.png"></h3>
+        </div><!--col-->
+
+        {{#each kitty.lannister}}
+            <div class="col s2">
+              <img width="200px" src="{{this.image}}">
+              <h6 id="shadow" class="center-align">{{this.name}}</h6>
+            </div><!--col-->
+        {{/each}}
+      </div><!--row-->
+    </div><!--wrapper-->
+  {{/if}}
+
+  <br><br>
+
+  {{#if kitty.baratheon}}
+    <div class="container valign-wrapper">
+      <div class="row"><!--STARK DIV-->
+        <div class="col s12">
+          <h3 style="padding-left: 20px" class="">HOUSE BARATHEON<img class="float-right" style="padding-left: 20px" height="75px" src="assets/img/got/baratheon.png"></h3>
+        </div><!--col-->
+
+        {{#each kitty.baratheon}}
+            <div class="col s2">
+              <img width="200px" src="{{this.image}}">
+              <h6 id="shadow" class="center-align">{{this.name}}</h6>
+            </div><!--col-->
+        {{/each}}
+      </div><!--row-->
+    </div><!--wrapper-->
+  {{/if}}
+
+<br><br>
+
+  {{#if kitty.targaryen}}
+    <div class="container valign-wrapper">
+      <div class="row"><!--STARK DIV-->
+        <div class="col s12">
+          <h3 style="padding-left: 20px" class="">HOUSE TARGARYEN<img class="float-right" style="padding-left: 20px" height="75px" src="assets/img/got/targaryen.png"></h3>
+        </div><!--col-->
+
+        {{#each kitty.targaryen}}
+            <div class="col s2">
+              <img width="200px" src="{{this.image}}">
+              <h6 id="shadow" class="center-align">{{this.name}}</h6>
+            </div><!--col-->
+        {{/each}}
+      </div><!--row-->
+    </div><!--wrapper-->
+  {{/if}}
+
+  <br><br>
+
+  {{#if kitty.nightswatch}}
+    <div class="container valign-wrapper">
+      <div class="row"><!--STARK DIV-->
+        <div class="col s12">
+          <h3 style="padding-left: 20px" class="">THE NIGHTSWATCH<img class="float-right" style="padding-left: 20px" height="75px" src=""></h3>
+        </div><!--col-->
+
+        {{#each kitty.nightswatch}}
+            <div class="col s2">
+              <img width="200px" src="{{this.image}}">
+              <h6 id="shadow" class="center-align">{{this.name}}</h6>
+            </div><!--col-->
+        {{/each}}
+      </div><!--row-->
+    </div><!--wrapper-->
+  {{/if}}
+
+  <br><br>
+
+  {{#if kitty.warriors}}
+    <div class="container valign-wrapper">
+      <div class="row"><!--STARK DIV-->
+        <div class="col s12">
+          <h3 style="padding-left: 20px" class="">Warriors of Westeros<img class="float-right" style="padding-left: 20px" height="75px" src=""></h3>
+        </div><!--col-->
+
+        {{#each kitty.warriors}}
+            <div class="col s2">
+              <img width="200px" src="{{this.image}}">
+              <h6 id="shadow" class="center-align">{{this.name}}</h6>
+            </div><!--col-->
+        {{/each}}
+      </div><!--row-->
+    </div><!--wrapper-->
+  {{/if}}
+
+  <br><br>
+
+  {{#if kitty.martell}}
+    <div class="container valign-wrapper">
+      <div class="row"><!--STARK DIV-->
+        <div class="col s12">
+          <h3 style="padding-left: 20px" class="">HOUSE MARTELL<img class="float-right" style="padding-left: 20px" height="75px" src=""></h3>
+        </div><!--col-->
+
+        {{#each kitty.martell}}
+            <div class="col s2">
+              <img width="200px" src="{{this.image}}">
+              <h6 id="shadow" class="center-align">{{this.name}}</h6>
+            </div><!--col-->
+        {{/each}}
+      </div><!--row-->
+    </div><!--wrapper-->
+  {{/if}}
+
+  <br><br>
+
+  {{#if kitty.tryell}}
+    <div class="container valign-wrapper">
+      <div class="row"><!--STARK DIV-->
+        <div class="col s12">
+          <h3 style="padding-left: 20px" class="">HOUSE TYRELL<img class="float-right" style="padding-left: 20px" height="75px" src=""></h3>
+        </div><!--col-->
+
+        {{#each kitty.tyrell}}
+            <div class="col s2">
+              <img width="200px" src="{{this.image}}">
+              <h6 id="shadow" class="center-align">{{this.name}}</h6>
+            </div><!--col-->
+        {{/each}}
+      </div><!--row-->
+    </div><!--wrapper-->
+  {{/if}}
+
+  <br><br>
+
+  {{#if kitty.wildlings}}
+    <div class="container valign-wrapper">
+      <div class="row"><!--STARK DIV-->
+        <div class="col s12">
+          <h3 style="padding-left: 20px" class="">WILDLINGS<img class="float-right" style="padding-left: 20px" height="75px" src=""></h3>
+        </div><!--col-->
+
+        {{#each kitty.wildlings}}
+            <div class="col s2">
+              <img width="200px" src="{{this.image}}">
+              <h6 id="shadow" class="center-align">{{this.name}}</h6>
+            </div><!--col-->
+        {{/each}}
+      </div><!--row-->
+    </div><!--wrapper-->
+  {{/if}}
+
+  {{#if kitty.smallCouncil}}
+    <div class="container valign-wrapper">
+      <div class="row"><!--STARK DIV-->
+        <div class="col s12">
+          <h3 style="padding-left: 20px" class="">SMALL COUNCIL<img class="float-right" style="padding-left: 20px" height="75px" src=""></h3>
+        </div><!--col-->
+
+        {{#each kitty.smallCOuncil}}
+            <div class="col s2">
+              <img width="200px" src="{{this.image}}">
+              <h6 id="shadow" class="center-align">{{this.name}}</h6>
+            </div><!--col-->
+        {{/each}}
+      </div><!--row-->
+    </div><!--wrapper-->
+  {{/if}}
+
+  <br><br>
+
+  {{#if kitty.direwolves}}
+    <div class="container valign-wrapper">
+      <div class="row"><!--STARK DIV-->
+        <div class="col s12">
+          <h3 style="padding-left: 20px" class="">DIREWOLVES<img class="float-right" style="padding-left: 20px" height="75px" src=""></h3>
+        </div><!--col-->
+
+        {{#each kitty.direwolves}}
+            <div class="col s2">
+              <img width="150px" src="{{this.image}}">
+              <h6 id="shadow" class="center-align">{{this.name}}</h6>
+            </div><!--col-->
+        {{/each}}
+      </div><!--row-->
+    </div><!--wrapper-->
+  {{/if}}
+
+  <br><br>
+
+  {{#if kitty.cat}}
+    <div class="container valign-wrapper">
+      <div class="row"><!--STARK DIV-->
+        <div class="col s12">
+          <h3 style="padding-left: 20px" class="">SPECIAL EDITION<img class="float-right" style="padding-left: 20px" height="75px" src=""></h3>
+        </div><!--col-->
+
+        {{#each kitty.cat}}
+            <div class="col s2">
+              <img width="200px" src="{{this.image}}">
+              <h6 id="shadow" class="center-align">{{this.name}}</h6>
+            </div><!--col-->
+        {{/each}}
+      </div><!--row-->
+    </div><!--wrapper-->
+  {{/if}}
+
+  <br><br>
+
+<!--

@@ -4,7 +4,7 @@ var randtoken = require("rand-token");
 
 module.exports = function (app) {
 
-	app.post("/admincreate", function (req, res) {
+	app.post("/admincreate", function(req, res) {
 		db.Item.create({
 			name: req.body.name,
 			house: req.body.house,
@@ -17,7 +17,6 @@ module.exports = function (app) {
 	});//Post Function Close
 
 	app.delete("/admin/:id", function(req, res) {
-
 		console.log(req.params.id);
 		db.Item.destroy({
 			where: {
@@ -160,6 +159,18 @@ module.exports = function (app) {
 
 			});
 
+			app.put("/api/updateItem/:id", function(req, res){
+				console.log(req.body);
+			    db.Items.update({
+					tier: req.body.tier
+			    	}, {
+					where: {
+						id: req.params.id
+					}
+				}).then(function(dbPost) {
+					res.end();
+			    });
 
+			  });
 
 };//Main Function Close

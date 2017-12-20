@@ -45,7 +45,7 @@ $(function(){
      );
 
   });
-  
+
   //ADMIN PAGE DELETE
   $(".delete-item").on("click", function(event) {
     event.preventDefault();
@@ -69,12 +69,13 @@ $(function(){
     event.preventDefault();
 
     var id = $(this).data("id");
+    var tier =  $(this).data("id");
     console.log(id);
     // Send the DELETE request.
 
-    $.ajax("/admin/" + id, {
+    $.ajax("/api/updateItem" + id, {
       type: "PUT",
-      data: {}
+      data: event
     }).then(
       function() {
         console.log("deleted id ", id);
