@@ -7,10 +7,12 @@ body {
 }
 .valign-wrapper{
    background-color: #f4f5f6;
-   padding: 10px;
+   /* padding: 10px; */
+   width: 100%;
    color: #2b2b3a;
    text-shadow: 1px 1px 2px #eafc40;
-   width: 1200px;
+
+   border-radius: 15px;
 }
 #shadow {
   text-shadow: 1px 1px 2px #f4f5f6;
@@ -18,26 +20,28 @@ body {
 
 </style>
 
- <div class="container" style="width: 100%;">
+ <div class="container" style="width: 100%">
  <br>
-  <div class="row">
-    <div class="col s12">
+  <div style="width: 100%" class="row">
+    <div style="width: 100%" class="col s12">
       <div class="right-align">{{>leaderboard-partial}}</div>
     </div>
   </div><!--row-->
  </div><!--container-->
 
   {{#if kitty.stark}}
-    <div class="container valign-wrapper">
+    <div class="container valign-wrapper" width="100%">
       <div class="row"><!--STARK DIV-->
         <div class="col s12">
-          <h3 style="padding-left: 20px" class="">HOUSE STARK<img class="float-right" style="padding-left: 20px" height="75px" src="assets/img/got/stark.png"></h3>
+          <h4 style="padding:30px 30px 0 30px" class="">HOUSE STARK<div class="right right-align"><img class="float-right" style="padding-left: 20px" height="75px" src="assets/img/got/stark.png"></div></h4>
         </div><!--col-->
 
         {{#each kitty.stark}}
-            <div class="col s2">
-              <img width="200px" src="{{this.image}}">
+            <div class="col s1">
+              <img style="padding: 10px" width="200px" src="{{this.image}}">
+
               <h6 id="shadow" class="center-align">{{this.name}}</h6>
+                  <div class="divider"></div>
             </div><!--col-->
         {{/each}}
       </div><!--row-->
@@ -47,14 +51,14 @@ body {
   <br><br>
 
   {{#if kitty.lannister}}
-    <div class="container valign-wrapper">
-      <div class="row"><!--STARK DIV-->
-        <div class="col s12">
-          <h3 style="padding-left: 20px" class="">HOUSE LANNISTER<img class="float-right" style="padding-left: 20px" height="75px" src="assets/img/got/lannister.png"></h3>
-        </div><!--col-->
+  <div class="container valign-wrapper">
+    <div class="row" width="100%"><!--STARK DIV-->
+      <div class="col s12">
+        <h4 style="padding:30px 30px 0 30px" class="">HOUSE LANNISTER<div class="right" ><img class="float-right" style="padding-left: 20px" height="75px" src="assets/img/got/lannister.png"></div></h4>
+      </div><!--col-->
 
         {{#each kitty.lannister}}
-            <div class="col s2">
+            <div class="col s1">
               <img width="200px" src="{{this.image}}">
               <h6 id="shadow" class="center-align">{{this.name}}</h6>
             </div><!--col-->
@@ -69,7 +73,7 @@ body {
     <div class="container valign-wrapper">
       <div class="row"><!--STARK DIV-->
         <div class="col s12">
-          <h3 style="padding-left: 20px" class="">HOUSE BARATHEON<img class="float-right" style="padding-left: 20px" height="75px" src="assets/img/got/baratheon.png"></h3>
+          <h4 style="padding:30px 30px 0 30px" class="">HOUSE BARATHEON<div class="right right-align" ><img class="float-right" style="padding-left: 20px" height="75px" src="assets/img/got/baratheon.png"></div></h4>
         </div><!--col-->
 
         {{#each kitty.baratheon}}
@@ -86,18 +90,18 @@ body {
 
   {{#if kitty.targaryen}}
     <div class="container valign-wrapper">
-      <div class="row"><!--STARK DIV-->
+      <div class="row" width="100%"><!--STARK DIV-->
         <div class="col s12">
-          <h3 style="padding-left: 20px" class="">HOUSE TARGARYEN<img class="float-right" style="padding-left: 20px" height="75px" src="assets/img/got/targaryen.png"></h3>
+          <h4 style="padding:30px 30px 0 30px" class="">HOUSE TARGARYEN<div class="right-align float-right right"><img class="float-right" style="padding-left: 20px" height="75px" src="assets/img/got/targaryen.png"></div></h4>
         </div><!--col-->
-
+  
         {{#each kitty.targaryen}}
             <div class="col s2">
               <img width="200px" src="{{this.image}}">
               <h6 id="shadow" class="center-align">{{this.name}}</h6>
             </div><!--col-->
         {{/each}}
-      </div><!--row-->
+  </div><!--row-->
     </div><!--wrapper-->
   {{/if}}
 
@@ -107,7 +111,7 @@ body {
     <div class="container valign-wrapper">
       <div class="row"><!--STARK DIV-->
         <div class="col s12">
-          <h3 style="padding-left: 20px" class="">THE NIGHTSWATCH<img class="float-right" style="padding-left: 20px" height="75px" src=""></h3>
+          <h3 style="padding-left: 20px" class="">THE NIGHTSWATCH</h3>
         </div><!--col-->
 
         {{#each kitty.nightswatch}}
@@ -126,7 +130,7 @@ body {
     <div class="container valign-wrapper">
       <div class="row"><!--STARK DIV-->
         <div class="col s12">
-          <h3 style="padding-left: 20px" class="">Warriors of Westeros<img class="float-right" style="padding-left: 20px" height="75px" src=""></h3>
+          <h3 style="padding-left: 20px" class="">Warriors of Westeros</h3>
         </div><!--col-->
 
         {{#each kitty.warriors}}
@@ -145,7 +149,7 @@ body {
     <div class="container valign-wrapper">
       <div class="row"><!--STARK DIV-->
         <div class="col s12">
-          <h3 style="padding-left: 20px" class="">HOUSE MARTELL<img class="float-right" style="padding-left: 20px" height="75px" src=""></h3>
+          <h3 style="padding-left: 20px" class="">HOUSE MARTELL<img class="float-right" style="padding-left: 20px" height="75px" src="assets/img/got/martell.png"></h3>
         </div><!--col-->
 
         {{#each kitty.martell}}
@@ -164,7 +168,7 @@ body {
     <div class="container valign-wrapper">
       <div class="row"><!--STARK DIV-->
         <div class="col s12">
-          <h3 style="padding-left: 20px" class="">HOUSE TYRELL<img class="float-right" style="padding-left: 20px" height="75px" src=""></h3>
+          <h3 style="padding-left: 20px" class="">HOUSE TYRELL<img class="float-right" style="padding-left: 20px" height="75px" src="assets/img/got/tyrellflag.png"></h3>
         </div><!--col-->
 
         {{#each kitty.tyrell}}
@@ -183,7 +187,7 @@ body {
     <div class="container valign-wrapper">
       <div class="row"><!--STARK DIV-->
         <div class="col s12">
-          <h3 style="padding-left: 20px" class="">WILDLINGS<img class="float-right" style="padding-left: 20px" height="75px" src=""></h3>
+          <h3 style="padding-left: 20px" class="">WILDLINGS</h3>
         </div><!--col-->
 
         {{#each kitty.wildlings}}
@@ -196,14 +200,16 @@ body {
     </div><!--wrapper-->
   {{/if}}
 
+  <br><br>
+
   {{#if kitty.smallCouncil}}
     <div class="container valign-wrapper">
       <div class="row"><!--STARK DIV-->
         <div class="col s12">
-          <h3 style="padding-left: 20px" class="">SMALL COUNCIL<img class="float-right" style="padding-left: 20px" height="75px" src=""></h3>
+          <h3 style="padding-left: 20px" class="">SMALL COUNCIL</h3>
         </div><!--col-->
 
-        {{#each kitty.smallCOuncil}}
+        {{#each kitty.smallCouncil}}
             <div class="col s2">
               <img width="200px" src="{{this.image}}">
               <h6 id="shadow" class="center-align">{{this.name}}</h6>
@@ -219,7 +225,7 @@ body {
     <div class="container valign-wrapper">
       <div class="row"><!--STARK DIV-->
         <div class="col s12">
-          <h3 style="padding-left: 20px" class="">DIREWOLVES<img class="float-right" style="padding-left: 20px" height="75px" src=""></h3>
+          <h3 style="padding-left: 20px" class="">DIREWOLVES<img class="float-right" style="padding-left: 20px" height="75px" src="assets/img/got/stark.png"></h3>
         </div><!--col-->
 
         {{#each kitty.direwolves}}
@@ -238,7 +244,7 @@ body {
     <div class="container valign-wrapper">
       <div class="row"><!--STARK DIV-->
         <div class="col s12">
-          <h3 style="padding-left: 20px" class="">SPECIAL EDITION<img class="float-right" style="padding-left: 20px" height="75px" src=""></h3>
+          <h3 style="padding-left: 20px" class="">SPECIAL EDITION</h3>
         </div><!--col-->
 
         {{#each kitty.cat}}
@@ -250,7 +256,3 @@ body {
       </div><!--row-->
     </div><!--wrapper-->
   {{/if}}
-
-  <br><br>
-
-<!--

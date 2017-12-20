@@ -3,10 +3,8 @@ $(function(){
     $("#image").on("click", function() {
 
       var clickSound = new Audio("assets/sounds/chest.mp3");
-      console.log(clickSound.volume);
       clickSound.volume = 0.1;
       clickSound.play();
-      console.log(clickSound.volume);
 
       setTimeout (function(){
         $(".images").show();
@@ -49,6 +47,7 @@ $(function(){
     });
 
     $("#1").click(function(){
+
         var clickSound = new Audio("assets/sounds/arena.mp3");
         console.log(clickSound.volume);
         clickSound.volume = 0.1;
@@ -100,6 +99,7 @@ $(function(){
                 }).done(console.log("Points count Updated"));
              }
         })
+
     });
 
     $("#2").click(function(){
