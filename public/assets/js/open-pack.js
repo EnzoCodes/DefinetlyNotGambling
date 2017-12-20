@@ -105,7 +105,6 @@ $(function(){
     });
 
     $("#2").click(function(){
-        clickTwo = true;
         var clickSound = new Audio("assets/sounds/arena.mp3");
         console.log(clickSound.volume);
         clickSound.volume = 0.1;
@@ -159,7 +158,6 @@ $(function(){
         });
 
         $("#3").click(function(){
-            clickThree = true;
             var clickSound = new Audio("assets/sounds/arena.mp3");
             console.log(clickSound.volume);
             clickSound.volume = 0.1;
