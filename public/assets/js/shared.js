@@ -85,6 +85,21 @@ $(function(){
     );
   });//Update item close
 
+  $(".getProfile").on("click", function(event) {
+    event.preventDefault();
 
+    var id = $(this).data("id");
+   // console.log(id);
+    // Send the DELETE request.
+
+    $.ajax("/collection/" + id, {
+      type: "GET"
+    }).then(
+      function() {
+     
+        location.reload();
+      }
+    );
+  });
 
 });//Main Function Close

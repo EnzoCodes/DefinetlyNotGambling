@@ -16,7 +16,8 @@ $(function(){
            console.log(JSON.parse(leaderContents).leaders[0].data[0].id); 
 
           for (i = 0; i < 10; i++) {
-                $("#slide-out").append("<li><h5>"+ JSON.parse(leaderContents).leaders[0].data[i].user_name + "  " + JSON.parse(leaderContents).leaders[0].data[i].points + "<div id='" + JSON.parse(leaderContents).leaders[0].data[i].id + "' class='row smimage'></div></h5></li>");
+                $("#slide-out").append("<li><a href=/collection/:id id='" + JSON.parse(leaderContents).leaders[0].data[i].id + "' class='getProfile'>"+ JSON.parse(leaderContents).leaders[0].data[i].user_name + "  " + JSON.parse(leaderContents).leaders[0].data[i].points + "</a></li>").attr("data-id", JSON.parse(leaderContents).leaders[0].data[i].id);
+                  
             }
 
         //    console.log(JSON.parse(leaderContents).leaders[0].tier3[0]); 
