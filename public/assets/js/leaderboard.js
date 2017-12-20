@@ -20,7 +20,7 @@ $(function(){
                   
             }
 
-        //    console.log(JSON.parse(leaderContents).leaders[0].tier3[0]); 
+        //    console.log(JSON.parse(leaderContents).leaders[0].tier3[0]); git statua
         //     if (JSON.parse(leaderContents).leaders[0].tier4.length > 0){
         //         for (i = 0; i<JSON.parse(leaderContents).leaders[0].tier4.length; i++) {
         //             $(".smimage").append("<li><img src="+"'"+ JSON.parse(leaderContents).leaders[0].tier4[i].image + "'></li>");
