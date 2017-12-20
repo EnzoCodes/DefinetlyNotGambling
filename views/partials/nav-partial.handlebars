@@ -1,17 +1,40 @@
+<style>
+.nav-wrapper {
+  background-color: #2b2b3a
 
+}
+#coinBtn {
+  background-color: #eafc40
+
+}
+#lootBtn, #collection {
+  background-color: #1ed2f4;
+  color: #f4f5f6
+}
+#coinDisplay, #btnLogout{
+  background-color: #f4f5f6
+}
+#coinCountFill {
+  color: #254558
+}
+#loot {
+    color: #eafc40
+  }
+
+</style>
   <div class="navbar-fixed">
     <nav>
-      <div class="lime accent-3 nav-wrapper">
-        <a style="padding-left: 40px; font-weight: bold;" class="amber-text center brand-logo">LOOT BOX</a>
+      <div class="nav-wrapper" style="">
+        <a style="padding-left: 40px; font-weight: bold;" id="loot" class="loot center brand-logo">LOOT BOX</a>
           <ul class="left hide-on-med-and-down">
-            <li><a href="#" id="btnLogout" class="red lighten-1 white-text btn-flat waves-light btn">Log Out</a></li>
-            <li><a href="" id="collection" class=" white teal-text waves-effect waves-light btn">{{>user-partial}}</a></li>
+            <li><a href="#" id="btnLogout" class="btn-flat waves-light btn">Log Out</a></li>
+            <li><a href="" id="collection" class="waves-effect waves-light btn">{{>user-partial}}</a></li>
           </ul>
 
           <ul class="right hide-on-med-and-down">
-            <li><a href="/loot" class="waves-effect waves-light btn">Purchase Loot Box</a></li>
-            <li><a href="#" id="coinBtn" class="waves-effect white teal-text btn-flat waves-light btn">Buy Coins</a></li>
-            <li><a href="#" id="coinDisplay" class="amber white-text waves-effect btn-flat waves-light btn"> <p id="coinCountFill"></p></a></li>
+            <li><a href="/loot" id="lootBtn" class="waves-effect waves-light btn">Get Loot</a></li>
+            <li><a href="#" id="coinBtn" class="waves-effect btn-flat waves-light btn">Buy Coins</a></li>
+            <li><a href="#" id="coinDisplay" class="waves-effect btn-flat waves-light btn"> <p id="coinCountFill"></p></a></li>
           </ul>
     </nav>
 </div><!--NavBarDivClose-->
