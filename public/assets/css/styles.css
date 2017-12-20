@@ -6,15 +6,23 @@
     margin-top: -5px !important;
 }
 
+/* This doesn't work */
 .images {
   animation: 250ms ease-in-out 1
 
 }
 
-#btnLogin, #btnLogout, #btnSignUp, #admin {
+#txtUserName, #txtPassword {
+    padding-left: 0px !important;
+    background: aliceblue;
+}
+
+#admin {
     height: 24px;
     line-height: 24px;
     padding: 0 0.5rem;
+    margin: 5px 12px 15px 5px !important;
+    color: #2b2b3a !important;
 }
 
 #logbox {

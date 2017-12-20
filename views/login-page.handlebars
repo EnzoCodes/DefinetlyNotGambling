@@ -1,45 +1,73 @@
 <style>
   body {
-    background-image: url("assets/img/bg/gold_scale.png");
+    background-image: url("assets/img/bg/stardust.png");
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    }
+
+  main {
+    flex: 1 0 auto;
   }
+
+  h1 {
+      color: #254558;
+      weight: 800;
+  }
+
 </style>
-<div class="container">
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <div class="row">
-            <div class="col s4"></div>
 
-            <div id="logbox" class="col s4 center-align">
-                <div class="box">
-                <h1>Boxy Box</h1>
+  <body>
+    <div class="section"></div>
+    <main>
+      <center>
+        <div class="section"></div>
 
-                    <input style="padding-left: 10px" id="txtUserName" name="userName" type="email" class="email" placeholder="Username" />
+        <div class="container">
+          <div class="z-depth-1 lighten-4 row" style="display: inline-block; background: #f4f5f5; padding: 32px 4.5em 0px 4.5em; border: 1px solid #EEE;">
 
-                    <input style="padding-left: 10px" id="txtPassword" name="password" type="password" class="email" placeholder="Password" />
+              <h1>Boxy Box</h1>
+            <form class="col s12" method="post">
+                <!-- Extra blank row gives spacing -->
+              <div class='row'>
+                <div class='col s12'>
+                </div>
+              </div>
 
-                    <button id="btnLogin" class="btn #c6ff00 lime accent-3 amber-text sign-in btn-small" style="margin: 5px">
-                        Log In
-                    </button><!-- End Btn -->
+              <div class='row'>
+                <div class='input-field col s12'>
+                  <input id='txtUserName' placeholder="  Username">
+                </div>
+              </div>
 
-                    <button id="btnSignUp" class="btn2 #c6ff00 lime accent-3 amber-text btn sign-up" style="margin: 5px">
-                        Sign Up
-                    </button><!-- End Btn2 -->
+              <div class='row'>
+                <div class='input-field col s12'>
+                  <input id='txtPassword' type="password" placeholder="  Password">
+                </div>
+              </div>
 
-                    <button id="btnLogout" class="btn indigo accent-1 sing-in hide" style="margin: 5px">
-                        Sign Out
-                    </button>
+              <br>
+              <center>
+                <div class='row'>
+                  <button type='submit' id="btnLogin" name='btnLogin' class='col s12 btn btn-small waves-effect' style="background:#1ed2f4">Login</button>
+                </div>
+              </center>
+              <center>
+                <div class='row'>
+                  <button type='submit' id="btnSignUp" name='btnSignup' class='col s12 btn btn-small waves-effect' style="background:#1ed2f4">Sign Up</button>
+                </div>
+              </center>
+            </form>
+          </div>
+        </div>
+         <button type='submit' name='admin' id="admin" class='col s12 btn btn-small waves-effect' style="background:#1ed2f4">Admin</button>
+      </center>
 
-                    <button id="admin" class="btn right-align #c6ff00 lime accent-3 amber-text" style="margin: 5px">
-                        Admin
-                    </button><!-- End Btn -->
+      <p id="dupe" class="duped hide">Username already taken</p>
+      <p id="badCred" class="badCred hide">Incorrect Username/Password</p>
+      <p id="noCred" class="noCred hide">Please enter Username/Password</p>
 
-                <p id="dupe" class="duped hide">Username already taken</p>
-                <p id="badCred" class="badCred hide">Incorrect Username/Password</p>
-                <p id="noCred" class="noCred hide">Please enter Username/Password</p>
-
-                </div> <!-- End Box -->
-            </div><!--col-->
-            <div class="col s4"></div>
-        </div><!--row-->
-
-</div>
+      <div class="section"></div>
+      <div class="section"></div>
+    </main>
 <script src="/assets/js/log-in.js"></script>
