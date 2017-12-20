@@ -2,7 +2,7 @@ $(function(){
     //If you have a token saved locally, skip log-in.
     $.post("/", {token: window.localStorage.getItem("token")}).then(function(res){
         if(!res) {
-            console.log("No user logged in...")
+            //console.log("No user logged in...")
         } else {
             console.log("User already authenticated: " + res.user_name);
             window.location.href = "/home";
@@ -27,7 +27,7 @@ $(function(){
                     $("#badCred").removeClass("hide");
                 } else {
                     window.localStorage.setItem("token", res);
-                    console.log(localStorage.getItem("token"));
+                    //console.log(localStorage.getItem("token"));
                     window.location.href = "/admin";
                 }
             })
@@ -53,7 +53,7 @@ $(function(){
                     $("#badCred").removeClass("hide");
                 } else {
                     window.localStorage.setItem("token", res);
-                    console.log(localStorage.getItem("token"));
+                    //console.log(localStorage.getItem("token"));
                     window.location.href = "/home";
                 }
             })
@@ -83,8 +83,8 @@ $(function(){
                 } else {
                     // If no dublicates, create new user object in DB.
                     $.post("/register", newUser).then(function(userData){
-                        console.log("New User created!");
-                        console.log(userData);
+                        //console.log("New User created!");
+                        //console.log(userData);
                         window.localStorage.setItem("token", userData.identity);
                         window.location.href = "/home";
                     })
