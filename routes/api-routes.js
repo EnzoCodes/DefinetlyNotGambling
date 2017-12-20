@@ -17,7 +17,7 @@ module.exports = function (app) {
 	});//Post Function Close
 
 	app.delete("/admin/:id", function(req, res) {
-		console.log(req.params.id);
+		//console.log(req.params.id);
 		db.Item.destroy({
 			where: {
 				id: req.params.id
@@ -38,12 +38,12 @@ module.exports = function (app) {
 				var num = Math.random(4);
 
 				if (num < 0.1) {
-					tierChoice.push(1);
+					tierChoice.push(4);
 				}
-				else if (num < 0.3) {
+				else if (num < 0.15) {
 					tierChoice.push(3);
 				}
-				else if (num < 0.6) {
+				else if (num < 0.2) {
 					tierChoice.push(2);
 				}
 				else {
@@ -54,7 +54,7 @@ module.exports = function (app) {
 
 		var identity = req.params.identity;
 
-		console.log(identity);
+		//console.log(identity);
 
 		var id;
 
@@ -103,7 +103,7 @@ module.exports = function (app) {
 					for(var i = 0;i<newPack.list.length;i++){
 						// closure function to make sure i++ waits for create to finish
 						// (function(i){})(i);
-						console.log("id: "+newPack.list[i].id);
+						//console.log("id: "+newPack.list[i].id);
 
 						db.user2items.create({
 							ItemId:newPack.list[i].id,
@@ -131,7 +131,7 @@ module.exports = function (app) {
 	});
 
 	app.put("/api/updateCoin", function(req, res){
-		console.log(req.body);
+		//console.log(req.body);
 	    db.User.update({
 			coin_count: req.body.coin
 	    }, {
@@ -146,7 +146,7 @@ module.exports = function (app) {
 
 
 	  app.put("/api/addPoints", function(req, res){
-		console.log(req.body);
+		//console.log(req.body);
 				db.User.update({
 					points: req.body.points
 				}, {
@@ -160,7 +160,7 @@ module.exports = function (app) {
 			});
 
 			app.put("/api/updateItem/:id", function(req, res){
-				console.log(req.body);
+				//console.log(req.body);
 			    db.Items.update({
 					tier: req.body.tier
 			    	}, {

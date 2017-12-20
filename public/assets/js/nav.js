@@ -5,12 +5,12 @@ $(function(){
     // except the loggin page. So we can do this with the partial.
 
     $.post("/", {token: window.localStorage.getItem("token")}).then(function(res){
-        console.log("what is here?", res);
+        //console.log("what is here?", res);
         if(!res) {
             window.localStorage.clear();
             window.location.href = "/";
         } else {
-            console.log("User authenticated: " + res.user_name);
+            //console.log("User authenticated: " + res.user_name);
             $("#coinCountFill").html("<p> Coins: "+ res.coin_count +"</p>");
             $("#userNameDisplay").html("<p>"+res.user_name+"<p>");
         }

@@ -25,8 +25,8 @@ module.exports = function (app) {
   //NEED TO EDIT CODE TO REFLECT A USER SEPCIFIC COLLECTION ONCE WE DO THAT LOGIC//
   app.get("/collection", function (req, res) {
     //need to figure out this @#O)OEFH)@ cookie
-    console.log("this is backend cookie"+req.cookies.identity);
-    console.log("this worked");
+   // console.log("this is backend cookie"+req.cookies.identity);
+    //console.log("this worked");
     var id;
 
     db.User.findOne({
@@ -35,9 +35,9 @@ module.exports = function (app) {
         }
       }).then(function(data){
         // id = data;
-        console.log("data id: "+data.id);
+       // console.log("data id: "+data.id);
         id = data.id;
-        console.log("this is ID: "+id);
+        //console.log("this is ID: "+id);
 
         db.User.findAll({
           include:[
@@ -51,7 +51,7 @@ module.exports = function (app) {
             }
 
           }).then(function (data) {
-            console.log("this is Item" + JSON.stringify(data[0].Items));
+           // console.log("this is Item" + JSON.stringify(data[0].Items));
             var stark = [];
             var lannister = [];
             var targaryen = [];
@@ -110,7 +110,7 @@ module.exports = function (app) {
             }
             var hbsObject = {
               // kitty: data.Item
-              kitty: {stark: stark,
+              kitty: {data:data, stark: stark,
                  lannister:lannister,
                  baratheon:baratheon,
                  targaryen:targaryen,
@@ -176,9 +176,56 @@ module.exports = function (app) {
     });
 
     app.get("/api/leaderboard", function (req, res) {
-      db.User.findAll({}).then(function (data) {
+      db.User.findAll({
+        include:[
+          {
+            model:db.Item,
+            require:false
+          }
+        ],
+        order: [
+        ["points", "DESC"]
+        ]
+      }).then(function (data) {
+        var tier4 = [];
+        var tier3 = [];
+        var tier2 = [];
+        var tier1 = [];
+        var tierall = [];
+        for (var i = 0; i < data[0].Items.length; i++) {
+          tierall.push(data[0].Items[i]);
+            //console.log(tierall); 
+          if (data[0].Items[i].tier === 4){
+            tier4.push(data[0].Items[i]);
+           // tierall.push(data[0].Items[i]);
+            //console.log(tierall); 
+          }
+          else if (data[0].Items[i].tier === 3){
+            tier3.push(data[0].Items[i]);
+           // tierall.push(data[0].Items[i]);
+            //console.log(tierall); 
+          }
+          else if (data[0].Items[i].tier === 2){
+            tier2.push(data[0].Items[i]);
+            //tierall.push(data[0].Items[i]);
+           //console.log(tierall); 
+          }
+          else if (data[0].Items[i].tier === 1){
+            tier1.push(data[0].Items[i]);
+            //tierall.push(data[0].Items[i]);
+            //console.log(tierall); 
+          }
+        }
         var hbsObject = {
-          leaders: data
+          leaders: [{
+            data:data,
+            tierall:tierall,
+            tier4:tier4,
+            tier3:tier3,
+            tier2:tier2,
+            tier1:tier1
+          }]
+  
         };
         res.json(hbsObject);
       });

@@ -11,7 +11,7 @@ $(function(){
       image: $("#createitem2 [name=image]").val().trim(),
       houseImage: $("#createitem2 [name=houseImage]").val().trim()
     };
-    console.log(newItem);
+    //console.log(newItem);
 
     // Send the POST request.
     $.ajax("/admincreate", {
@@ -19,7 +19,7 @@ $(function(){
       data: newItem
     }).then(
       function () {
-        console.log("created new item");
+       // console.log("created new item");
         // Reload the page to get the updated list
         location.reload();
       });
@@ -33,7 +33,7 @@ $(function(){
     document.cookie = "identity="+window.localStorage.getItem("token");
 
     var x = document.cookie;
-    console.log("this is cookie!!!!"+x);
+    //console.log("this is cookie!!!!"+x);
 
     $.ajax("/collection", {
        type: "GET"
@@ -51,7 +51,7 @@ $(function(){
     event.preventDefault();
 
     var id = $(this).data("id");
-    console.log(id);
+   // console.log(id);
     // Send the DELETE request.
 
     $.ajax("/admin/" + id, {
@@ -70,7 +70,7 @@ $(function(){
 
     var id = $(this).data("id");
     var tier =  $(this).data("id");
-    console.log(id);
+    //console.log(id);
     // Send the DELETE request.
 
     $.ajax("/api/updateItem" + id, {
@@ -78,7 +78,7 @@ $(function(){
       data: event
     }).then(
       function() {
-        console.log("deleted id ", id);
+        //console.log("deleted id ", id);
         // Reload the page to get the updated list
         location.reload();
       }
