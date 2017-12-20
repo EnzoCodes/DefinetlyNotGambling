@@ -1,6 +1,31 @@
 $(function(){
 
     $("#image").on("click", function() {
+    //Subtracting coins...
+    $.post("/", {token: window.localStorage.getItem("token")}).then(function(res){
+        console.log("Post to add coins was made");
+        if(!res) {
+            window.localStorage.clear();
+            window.location.href = "/";
+        } else if(res.coin_count <= 0) {
+            console.log("no coin");
+        } else {
+
+            var username = res.user_name;
+            var coin = res.coin_count -= 50;
+
+            $("#coinCountFill").html("<p> Coins: "+ coin +"</p>");
+
+            $.ajax({
+                method: "PUT",
+                url: "/api/updateCoin",
+                data: {
+                    coin: coin,
+                    username: username
+                }
+            }).done(console.log("Coin count Updated"));
+        }
+    });
 
       var clickSound = new Audio("assets/sounds/chest.mp3");
       clickSound.volume = 0.1;
@@ -19,32 +44,9 @@ $(function(){
         }).then(function(data) {
             console.log("this worked", data);
             window.localStorage.setItem("box-contents", JSON.stringify(data));
-
-            //Subtracting coins...
-            $.post("/", {token: window.localStorage.getItem("token")}).then(function(res){
-                console.log("Post to add coins was made");
-                if(!res) {
-                    window.localStorage.clear();
-                    window.location.href = "/";
-                } else {
-
-                    var username = res.user_name;
-                    var coin = res.coin_count -= 50;
-
-                    $("#coinCountFill").html("<p> Coins: "+ coin +"</p>");
-
-                    $.ajax({
-                        method: "PUT",
-                        url: "/api/updateCoin",
-                        data: {
-                            coin: coin,
-                            username: username
-                        }
-                    }).done(console.log("Coin count Updated"));
-                }
-            })
           });
-    });
+
+    }); // End #image function
 
     $("#1").click(function(){
 
