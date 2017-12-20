@@ -37,7 +37,7 @@ module.exports = function (app) {
 			for (var i = 0; i < 3; i++) {
 				var num = Math.random(4);
 
-				if (num < 0.1) {
+				if (num < 0.05) {
 					tierChoice.push(4);
 				}
 				else if (num < 0.15) {
