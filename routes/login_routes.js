@@ -44,6 +44,7 @@ module.exports = function(app) {
                 identity: req.body.token
             }
         }).then(function(dbRes) {
+            console.log(typeof dbRes.points); 
             res.json(dbRes);
         })
     });

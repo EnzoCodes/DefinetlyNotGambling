@@ -1,44 +1,47 @@
 var db = require("../models");
 var cookieParser = require("cookie-parser");
+var Sequelize = require('sequelize');
+var randtoken = require("rand-token");
 
 module.exports = function (app) {
+
+  //Render login page at start
   app.get("/", function (req, res) {
     res.render("login-page");
   });
 
+  //Render login-page at register
   app.get("/register", function (req, res) {
     res.render("login-page");
   });
 
+  //render open-pack handlebar page/home page after login
   app.get("/home", function (req, res) {
     res.render("open-pack");
   });
 
+  //
   app.get("/api/open", function (req, res) {
     res.render("open-pack");
   });
 
+  //render open-pack handle bars after a chest has been purchased
   app.get("/loot", function (req, res) {
     res.render("open-pack");
   });
 
-  //NEED TO EDIT CODE TO REFLECT A USER SEPCIFIC COLLECTION ONCE WE DO THAT LOGIC//
+  //Gets the user opened items from the database and sorts them into objects to send to collection handlebar page
   app.get("/collection", function (req, res) {
-    //need to figure out this @#O)OEFH)@ cookie
-   // console.log("this is backend cookie"+req.cookies.identity);
-    //console.log("this worked");
     var id;
-
+    //Requests user specific data from the Users table with cookies/token
     db.User.findOne({
       where:{
         identity: req.cookies.identity
         }
       }).then(function(data){
-        // id = data;
-       // console.log("data id: "+data.id);
         id = data.id;
-        //console.log("this is ID: "+id);
 
+        //Requests all data from the items table that the user has opened
         db.User.findAll({
           include:[
             {
@@ -46,12 +49,12 @@ module.exports = function (app) {
               require:false
             }
           ],
-            where:{
+            where: {
               id:id
             }
-
           }).then(function (data) {
-           // console.log("this is Item" + JSON.stringify(data[0].Items));
+
+            //Create empty arrays for each house/class
             var stark = [];
             var lannister = [];
             var targaryen = [];
@@ -66,6 +69,7 @@ module.exports = function (app) {
             var cat = [];
             var direwolves = [];
 
+            //Loop through the list of the users items, and push to empty arrays according to house data column
             for (var i = 0; i < data[0].Items.length; i++) {
               if (data[0].Items[i].house === "Stark"){
                 stark.push(data[0].Items[i]);
@@ -106,11 +110,11 @@ module.exports = function (app) {
               else if (data[0].Items[i].house === "Cat"){
                 cat.push(data[0].Items[i]);
               }
+            }//forloop
 
-            }
-            var hbsObject = {
-              // kitty: data.Item
-              kitty: {data:data, stark: stark,
+            //Create an object with the house arrays and send it as JSON & render the collection handlebar page
+            var hsObject = {
+              house: {data:data, stark: stark,
                  lannister:lannister,
                  baratheon:baratheon,
                  targaryen:targaryen,
@@ -125,63 +129,31 @@ module.exports = function (app) {
                  smallCouncil:smallCouncil,
                  wildlings:wildlings
                       }
-            };
-            //console.log(hbsObject);
-            res.render("collection", hbsObject);
+              };
+           
+              res.render("collection", hsObject);
           });
-
     });
 
+  });//Get request
 
 
+  app.get("/login-page", function(req, res){
+    res.render("login-page");
   });
 
-
-
-
-    // app.get("/api/collection/:id",function(req,res){
-
-    // console.log(req.params.id);
-
-    //     db.User.findAll({
-    //     // attributes:["id"],
-    //       include:[
-    //           {
-    //           model:db.Item,
-    //           require:false
-    //     //     attributes: ["id"]
-    //           }
-    //       ],
-    //       where:{id:req.params.id}
-    //     }).then(function(data){
-
-    //       res.json(data);
-    //   });
-
-    // });
-
-
-
-    app.get("/login-page", function(req, res){
-        res.render("login-page");
+  //Sends all data from items table as an object and renders admin page
+  app.get("/admin", function (req, res) {
+    db.Item.findAll({}).then(function (data) {
+      var charObject = {
+        character: data
+      };
+      res.render("admin", charObject);
     });
+  });
 
-
-
-
-    app.get("/admin", function (req, res) {
-      db.Item.findAll({}).then(function (data) {
-        var hbsObject = {
-          kitty: data
-        };
-        res.render("admin-cats", hbsObject);
-      });
-    });
-
-
-
-
-    app.get("/api/leaderboard", function (req, res) {
+  //
+  app.get("/api/leaderboard", function (req, res) {
       db.User.findAll({
         include:[
           {
@@ -342,14 +314,113 @@ module.exports = function (app) {
             });
     });
   });
+
+
+
+
+
+	app.get("/api/open/:identity", function (req, res) {
+		var items = [];
+		var tierChoice = [];
+
+		function packopen() {
+
+			for (var i = 0; i < 3; i++) {
+				var num = Math.random(4);
+
+				if (num < 0.05) {
+					tierChoice.push(4);
+				}
+				else if (num < 0.15) {
+					tierChoice.push(3);
+				}
+				else if (num < 0.2) {
+					tierChoice.push(2);
+				}
+				else {
+					tierChoice.push(1);
+				}
+			}
+		}
+
+		var identity = req.params.identity;
+
+		//console.log(identity);
+
+		var id;
+
+		db.User.findOne({
+			where:{
+				identity:req.params.identity
+				// id:3
+				}
+			}).then(function(data){
+				// id = data;
+				// console.log("data id: "+data.id);
+				id = data.id;
+			});
+
+		packopen();
+
+		db.Item.findOne({
+			order: [[Sequelize.literal('RAND()')]],
+			where: {
+				tier: tierChoice[0]
+			}
+		}).then(function (data1) {
+			items.push(data1);
+
+			db.Item.findOne({
+				order: [[Sequelize.literal('RAND()')]],
+				where: {
+					tier: tierChoice[1]
+				}
+			}).then(function (data2) {
+				items.push(data2);
+
+				db.Item.findOne({
+					order: [[Sequelize.literal('RAND()')]],
+					where: {
+						tier: tierChoice[2]
+					}
+				}).then(function (data3) {
+					items.push(data3);
+					// res.json(items);
+					var newPack = {
+						list: items
+					};
+					// console.log(newPack.list[0].id);
+
+					for(var i = 0;i<newPack.list.length;i++){
+						// closure function to make sure i++ waits for create to finish
+						// (function(i){})(i);
+						//console.log("id: "+newPack.list[i].id);
+
+						db.user2items.create({
+							ItemId:newPack.list[i].id,
+							UserId: id
+						}).then(function(data){
+							// console.log(data);
+						});
+
+
+					}
+					// console.log(newPack);
+					res.json(newPack);
+
+				});
+			});
+		});
+	});
+
+
+	app.get("/api/bought",function(req,res){
+		db.user2items.findAll({})
+		.then(function(data){
+			res.json(data);
+		});
+	});
+
+	
   };
 
-  //NEED TO WORK OUT COIN COUNT CODE//
-  // app.get("/*", function (req, res) {
-  //   db.User.findOne({}).then(function (data) {
-  //     var coinCount = {
-  //       coins: data.coin_count
-  //     };
-  //     res.render("/*", coinCount);
-  //   });
-  // });

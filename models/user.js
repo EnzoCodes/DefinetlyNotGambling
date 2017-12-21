@@ -12,12 +12,12 @@ module.exports = function(sequelize, DataTypes) {
         },
         coin_count: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            //allowNull: false,
             defaultValue: 100
         },
         points: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            //allowNull: false,
             defaultValue: 100
         },
         identity: {
